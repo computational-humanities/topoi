@@ -36,6 +36,17 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    'nbsphinx',
+    'bokeh.sphinxext.bokeh_autodoc',
+    'bokeh.sphinxext.bokeh_gallery',
+    'bokeh.sphinxext.bokeh_github',
+    'bokeh.sphinxext.bokeh_jinja',
+    'bokeh.sphinxext.bokeh_model',
+    'bokeh.sphinxext.bokeh_palette',
+    'bokeh.sphinxext.bokeh_plot',
+    'bokeh.sphinxext.bokeh_prop',
+    #'bokeh.sphinxext.bokeh_sitemap',
+    'bokeh.sphinxext.collapsible_code_block',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -87,7 +98,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = []
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','**.ipynb_checkpoints']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -126,7 +137,10 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+from better import better_theme_path
+html_theme_path = [better_theme_path]
+html_theme = 'better'
+#html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -348,5 +362,15 @@ texinfo_documents = [
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {
+    'pandas': (
+        'http://pandas.pydata.org/pandas-docs/stable',
+        None),
+    'python': (
+        'https://docs.python.org/2',
+        None),
+    'python3': (
+        'https://docs.python.org/3/',
+        None),
+}
 

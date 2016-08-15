@@ -1,0 +1,39 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{booktabs}
+
+\title{LatexTables from Pandas DataFrames}
+\author{mv}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\begin{abstract}
+Print tables from Pandas  
+\end{abstract}
+
+\section{Tables}
+
+\begin{figure}
+\centering
+\begin{tabular}{llllr}
+\toprule
+{} &  manID &   textID &     diaID &  Count \\
+\midrule
+0 &  LK(1) &  LK(1)\_B &  MAPD0345 &      1 \\
+1 &  NW(2) &  NW(2)\_A &  MAPD0347 &      1 \\
+2 &  AY(3) &  AY(3)\_A &  MAPD0386 &      2 \\
+3 &  AY(3) &  AY(3)\_A &  MAPD0397 &      2 \\
+4 &  AY(1) &  AY(1)\_A &  MAPD0292 &     12 \\
+5 &  AY(1) &  AY(1)\_A &  MAPD0367 &     12 \\
+\bottomrule
+\end{tabular}
+\caption{Manuscript ID and number of diagrams per text}
+\end{figure}
+
+\end{document}

@@ -10,14 +10,6 @@ Bokeh test
 
    bokeh
 
-
-Medieval Diagrams
-=================
-
-.. toctree::
-   :maxdepth: 3
-
-   MedievalDiagrams.ipynb
    
 Geography Omega
 ===============
@@ -25,7 +17,7 @@ Geography Omega
 .. toctree::
    :maxdepth: 3
 
-   Geography.ipynb
+   geography.ipynb
 
 Capella manuscripts analysis
 ============================
@@ -33,4 +25,12 @@ Capella manuscripts analysis
 .. toctree::
    :maxdepth: 4
 
-   Capella_manuscript.ipynb
+   capella_medievaldiagrams.ipynb
+
+External databases
+==================
+
+.. toctree::
+   :maxdepth:3
+
+   web2dataframe.ipynb

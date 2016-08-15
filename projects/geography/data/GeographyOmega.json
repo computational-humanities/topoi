@@ -1,0 +1,1709 @@
+[
+    {
+        "book_ID": 5,
+        "chaps": [
+            {
+                "chap_ID": 1,
+                "secs": [
+                    {
+                        "sec_ID": 1,
+                        "textstring": "",
+                        "type": "title",
+                        "tops": [
+                            {
+                                "ID": "5.01.01.01",
+                                "toponym_ge": "Pontos und Bithynien",
+                                "toponym": "",
+                                "top_type": "210 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": []
+                            }
+                        ],
+                        "prev_sec_ID": ""
+                    },
+                    {
+                        "sec_ID": 2,
+                        "textstring": "",
+                        "type": "neighbours_W",
+                        "tops": [
+                            {
+                                "ID": "5.01.01.02",
+                                "toponym_ge": "Pontos Euxeinos (Ausgang)",
+                                "toponym": "",
+                                "top_type": "200 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.01.02",
+                                "toponym_ge": "Thrakischer Bosporos",
+                                "toponym": "",
+                                "top_type": "200 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.01.02"
+                            },
+                            {
+                                "ID": "5.01.01.03",
+                                "toponym_ge": "Propontis",
+                                "toponym": "",
+                                "top_type": "200 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.01.02"
+                            }
+                        ],
+                        "prev_sec_ID": 1
+                    },
+                    {
+                        "sec_ID": 3,
+                        "textstring": "",
+                        "type": "border_W",
+                        "tops_table": [
+                            {
+                                "ID": "5.01.02.01",
+                                "toponym_ge": "Artemis-Heiligtum bzw. Spitze Bithyniens",
+                                "toponym": "",
+                                "top_type": "483 - vereinzelte Bauwerke an der Kueste",
+                                "long_dec": 56.0,
+                                "long_deg": 56,
+                                "long_min": 0.0,
+                                "lat_dec": 43.33,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.33,
+                                "loc_name": "Yum Burnu",
+                                "loc_long": 29.168,
+                                "loc_lat": 41.222,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.02.02",
+                                "toponym_ge": "Chalkedon*",
+                                "toponym": "",
+                                "top_type": "413 - Polis, an der Kueste gelegen",
+                                "long_dec": 56.08,
+                                "long_deg": 56,
+                                "long_min": 0.08,
+                                "lat_dec": 43.08,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.08,
+                                "loc_name": "Kadıköy",
+                                "loc_long": 29.026,
+                                "loc_lat": 40.984,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.02.01"
+                            },
+                            {
+                                "ID": "5.01.02.03",
+                                "toponym_ge": "Kap Akritas",
+                                "toponym": "",
+                                "top_type": "330 - Kuestenpunkt",
+                                "long_dec": 56.5,
+                                "long_deg": 56,
+                                "long_min": 0.5,
+                                "lat_dec": 42.75,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.75,
+                                "loc_name": "Tuzla Burnu",
+                                "loc_long": 29.259,
+                                "loc_lat": 40.803,
+                                "identical_places": [
+                                    "8.17.03.02"
+                                ],
+                                "prev_sec_ID": "5.01.02.02"
+                            },
+                            {
+                                "ID": "5.01.02.04",
+                                "toponym_ge": "Trarion ",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 56.75,
+                                "long_deg": 56,
+                                "long_min": 0.75,
+                                "lat_dec": 42.75,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.75,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.02.03"
+                            },
+                            {
+                                "ID": "5.01.02.05",
+                                "toponym_ge": "Trarion ",
+                                "toponym": "",
+                                "top_type": "403 - ",
+                                "long_dec": 56.75,
+                                "long_deg": 56,
+                                "long_min": 0.75,
+                                "lat_dec": 42.75,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.75,
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.02.04"
+                            },
+                            {
+                                "ID": "5.01.03.01",
+                                "toponym_ge": "Astakos",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 57.0,
+                                "long_deg": 57,
+                                "long_min": 0.0,
+                                "lat_dec": 42.67,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.67,
+                                "loc_name": "Baş İskele",
+                                "loc_long": 29.938,
+                                "loc_lat": 40.716,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.02.05"
+                            },
+                            {
+                                "ID": "5.01.03.02",
+                                "toponym_ge": "Nikomedeia*",
+                                "toponym": "",
+                                "top_type": "413 - Polis, an der Kueste gelegen",
+                                "long_dec": 57.33,
+                                "long_deg": 57,
+                                "long_min": 0.33,
+                                "lat_dec": 42.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.5,
+                                "loc_name": "İzmit",
+                                "loc_long": 29.922,
+                                "loc_lat": 40.765,
+                                "identical_places": [
+                                    "8.17.04.01"
+                                ],
+                                "prev_sec_ID": "5.01.03.01"
+                            },
+                            {
+                                "ID": "5.01.03.03",
+                                "toponym_ge": "Olbia",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 57.0,
+                                "long_deg": 57,
+                                "long_min": 0.0,
+                                "lat_dec": 42.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.5,
+                                "loc_name": "",
+                                "loc_long": 29.12,
+                                "loc_lat": 40.642,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.03.02"
+                            },
+                            {
+                                "ID": "5.01.04.01",
+                                "toponym_ge": "Kap Poseidion",
+                                "toponym": "",
+                                "top_type": "330 - Kuestenpunkt",
+                                "long_dec": 56.5,
+                                "long_deg": 56,
+                                "long_min": 0.5,
+                                "lat_dec": 42.42,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.42,
+                                "loc_name": "Bozburun",
+                                "loc_long": 28.783,
+                                "loc_lat": 40.521,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.03.03"
+                            },
+                            {
+                                "ID": "5.01.04.02",
+                                "toponym_ge": "Askanios-Mündung",
+                                "toponym": "",
+                                "top_type": "321 - Flussmuendung",
+                                "long_dec": 56.5,
+                                "long_deg": 56,
+                                "long_min": 0.5,
+                                "lat_dec": 42.25,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.25,
+                                "loc_name": "Gemlık Dere",
+                                "loc_long": 29.154,
+                                "loc_lat": 40.43,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.04.01"
+                            },
+                            {
+                                "ID": "5.01.04.03",
+                                "toponym_ge": "Askania-See",
+                                "toponym": "",
+                                "top_type": "322 - Flusslauf",
+                                "long_dec": 57.75,
+                                "long_deg": 57,
+                                "long_min": 0.75,
+                                "lat_dec": 42.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.0,
+                                "loc_name": "İznik Gölü",
+                                "loc_long": 29.518,
+                                "loc_lat": 40.434,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.04.02"
+                            },
+                            {
+                                "ID": "5.01.04.04",
+                                "toponym_ge": "Prusias",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 57.33,
+                                "long_deg": 57,
+                                "long_min": 0.33,
+                                "lat_dec": 42.08,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.08,
+                                "loc_name": "Gemlık",
+                                "loc_long": 29.154,
+                                "loc_lat": 40.43,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.04.03"
+                            },
+                            {
+                                "ID": "5.01.04.05",
+                                "toponym_ge": "Apameia*",
+                                "toponym": "",
+                                "top_type": "413 - Polis, an der Kueste gelegen",
+                                "long_dec": 56.92,
+                                "long_deg": 56,
+                                "long_min": 0.92,
+                                "lat_dec": 42.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.0,
+                                "loc_name": "Mudanya",
+                                "loc_long": 28.882,
+                                "loc_lat": 40.378,
+                                "identical_places": [
+                                    "8.17.05.01"
+                                ],
+                                "prev_sec_ID": "5.01.04.04"
+                            },
+                            {
+                                "ID": "5.01.04.06",
+                                "toponym_ge": "Daskylion",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 56.58,
+                                "long_deg": 56,
+                                "long_min": 0.58,
+                                "lat_dec": 41.92,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.92,
+                                "loc_name": "Eşkel",
+                                "loc_long": 28.687,
+                                "loc_lat": 40.349,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.04.05"
+                            },
+                            {
+                                "ID": "5.01.04.07",
+                                "toponym_ge": "Rhyndakos-Mündung",
+                                "toponym": "",
+                                "top_type": "321 - Flussmuendung",
+                                "long_dec": 56.33,
+                                "long_deg": 56,
+                                "long_min": 0.33,
+                                "lat_dec": 41.75,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.75,
+                                "loc_name": "Kocasu",
+                                "loc_long": 28.516,
+                                "loc_lat": 40.395,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.04.06"
+                            },
+                            {
+                                "ID": "5.01.04.08",
+                                "toponym_ge": "Rhyndakos-Quellen",
+                                "toponym": "",
+                                "top_type": "324 - Flussquelle",
+                                "long_dec": 57.0,
+                                "long_deg": 57,
+                                "long_min": 0.0,
+                                "lat_dec": 40.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 40,
+                                "lat_min": 0.5,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.04.07"
+                            }
+                        ],
+                        "prev_sec_ID": 2
+                    },
+                    {
+                        "sec_ID": 4,
+                        "textstring": "",
+                        "type": "neighbours_N",
+                        "tops": [
+                            {
+                                "ID": "5.01.05.01",
+                                "toponym_ge": "Pontos Euxeinos",
+                                "toponym": "",
+                                "top_type": "200 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.05.02",
+                                "toponym_ge": "Pontos Euxeinos (Ausgang)",
+                                "toponym": "",
+                                "top_type": "200 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.05.01"
+                            },
+                            {
+                                "ID": "5.01.05.03",
+                                "toponym_ge": "Artemis-Heiligtum",
+                                "toponym": "",
+                                "top_type": "260 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.05.02"
+                            }
+                        ],
+                        "prev_sec_ID": 3
+                    },
+                    {
+                        "sec_ID": 5,
+                        "textstring": "",
+                        "type": "border_N",
+                        "tops_table": [
+                            {
+                                "ID": "5.01.05.04",
+                                "toponym_ge": "Kap Bithynia",
+                                "toponym": "",
+                                "top_type": "330 - Kuestenpunkt",
+                                "long_dec": 56.75,
+                                "long_deg": 56,
+                                "long_min": 0.75,
+                                "lat_dec": 43.33,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.33,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.05.05",
+                                "toponym_ge": "Artake",
+                                "toponym": "",
+                                "top_type": "443 - befestigter Ort an der Kueste",
+                                "long_dec": 57.0,
+                                "long_deg": 57,
+                                "long_min": 0.0,
+                                "lat_dec": 43.25,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.25,
+                                "loc_name": "Şile",
+                                "loc_long": 29.611,
+                                "loc_lat": 41.174,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.05.04"
+                            },
+                            {
+                                "ID": "5.01.05.06",
+                                "toponym_ge": "Psyllis-Mündung",
+                                "toponym": "",
+                                "top_type": "321 - Flussmuendung",
+                                "long_dec": 57.25,
+                                "long_deg": 57,
+                                "long_min": 0.25,
+                                "lat_dec": 43.25,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.25,
+                                "loc_name": "Göksu",
+                                "loc_long": 29.851,
+                                "loc_lat": 41.139,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.05.05"
+                            },
+                            {
+                                "ID": "5.01.05.07",
+                                "toponym_ge": "Kalpa-Mündung",
+                                "toponym": "",
+                                "top_type": "321 - Flussmuendung",
+                                "long_dec": 57.67,
+                                "long_deg": 57,
+                                "long_min": 0.67,
+                                "lat_dec": 43.08,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.08,
+                                "loc_name": "Ilaflı Dere",
+                                "loc_long": 30.572,
+                                "loc_lat": 41.137,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.05.06"
+                            },
+                            {
+                                "ID": "5.01.06.01",
+                                "toponym_ge": "Sangarios-Mündung",
+                                "toponym": "",
+                                "top_type": "321 - Flussmuendung",
+                                "long_dec": 58.0,
+                                "long_deg": 58,
+                                "long_min": 0.0,
+                                "lat_dec": 42.75,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.75,
+                                "loc_name": "Sarkaya Nehri",
+                                "loc_long": 30.654,
+                                "loc_lat": 41.118,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.05.07"
+                            },
+                            {
+                                "ID": "5.01.06.02",
+                                "toponym_ge": "Sangarios (1. Krümmung)",
+                                "toponym": "",
+                                "top_type": "322 - Flusslauf",
+                                "long_dec": 58.5,
+                                "long_deg": 58,
+                                "long_min": 0.5,
+                                "lat_dec": 42.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.0,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.06.01"
+                            },
+                            {
+                                "ID": "5.01.06.03",
+                                "toponym_ge": "Sangarios (2. Krümmung)",
+                                "toponym": "",
+                                "top_type": "322 - Flusslauf",
+                                "long_dec": 61.33,
+                                "long_deg": 61,
+                                "long_min": 0.33,
+                                "lat_dec": 42.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.0,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.06.02"
+                            },
+                            {
+                                "ID": "5.01.06.04",
+                                "toponym_ge": "Sangarios (3. Krümmung)",
+                                "toponym": "",
+                                "top_type": "322 - Flusslauf",
+                                "long_dec": 58.75,
+                                "long_deg": 58,
+                                "long_min": 0.75,
+                                "lat_dec": 41.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.0,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.06.03"
+                            },
+                            {
+                                "ID": "5.01.06.05",
+                                "toponym_ge": "Sangarios-Quellen",
+                                "toponym": "",
+                                "top_type": "324 - Flussquelle",
+                                "long_dec": 60.83,
+                                "long_deg": 60,
+                                "long_min": 0.83,
+                                "lat_dec": 40.83,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 40,
+                                "lat_min": 0.83,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.06.04"
+                            },
+                            {
+                                "ID": "5.01.07.01",
+                                "toponym_ge": "Hypios-Mündung",
+                                "toponym": "",
+                                "top_type": "321 - Flussmuendung",
+                                "long_dec": 58.67,
+                                "long_deg": 58,
+                                "long_min": 0.67,
+                                "lat_dec": 42.75,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.75,
+                                "loc_name": "Melen Çayı",
+                                "loc_long": 30.956,
+                                "loc_lat": 41.058,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.06.05"
+                            },
+                            {
+                                "ID": "5.01.07.02",
+                                "toponym_ge": "Elata-Mündung",
+                                "toponym": "",
+                                "top_type": "321 - Flussmuendung",
+                                "long_dec": 58.83,
+                                "long_deg": 58,
+                                "long_min": 0.83,
+                                "lat_dec": 43.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.0,
+                                "loc_name": "Kocaman Dere",
+                                "loc_long": 31.301,
+                                "loc_lat": 41.099,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.07.01"
+                            },
+                            {
+                                "ID": "5.01.07.03",
+                                "toponym_ge": "Diospolis ",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 58.75,
+                                "long_deg": 58,
+                                "long_min": 0.75,
+                                "lat_dec": 43.33,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.33,
+                                "loc_name": "Alçakoca",
+                                "loc_long": 31.119,
+                                "loc_lat": 41.067,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.07.02"
+                            },
+                            {
+                                "ID": "5.01.07.04",
+                                "toponym_ge": "Herakleia am Pontos*",
+                                "toponym": "",
+                                "top_type": "413 - Polis, an der Kueste gelegen",
+                                "long_dec": 59.0,
+                                "long_deg": 59,
+                                "long_min": 0.0,
+                                "lat_dec": 43.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.5,
+                                "loc_name": "Ereğli",
+                                "loc_long": 31.421,
+                                "loc_lat": 41.265,
+                                "identical_places": [
+                                    "8.17.06.01"
+                                ],
+                                "prev_sec_ID": "5.01.07.03"
+                            },
+                            {
+                                "ID": "5.01.07.05",
+                                "toponym_ge": "Psylleion ",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 59.5,
+                                "long_deg": 59,
+                                "long_min": 0.5,
+                                "lat_dec": 43.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.5,
+                                "loc_name": "Çatalğzı",
+                                "loc_long": 31.891,
+                                "loc_lat": 41.497,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.07.04"
+                            },
+                            {
+                                "ID": "5.01.07.06",
+                                "toponym_ge": "Tion",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 60.0,
+                                "long_deg": 60,
+                                "long_min": 0.0,
+                                "lat_dec": 43.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.5,
+                                "loc_name": "Hisarönü",
+                                "loc_long": 32.024,
+                                "loc_lat": 41.55,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.07.05"
+                            },
+                            {
+                                "ID": "5.01.07.07",
+                                "toponym_ge": "Parthenios-Mündung",
+                                "toponym": "",
+                                "top_type": "321 - Flussmuendung",
+                                "long_dec": 60.25,
+                                "long_deg": 60,
+                                "long_min": 0.25,
+                                "lat_dec": 43.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.5,
+                                "loc_name": "Bartın Suyu",
+                                "loc_long": 32.232,
+                                "loc_lat": 41.666,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.07.06"
+                            },
+                            {
+                                "ID": "5.01.07.08",
+                                "toponym_ge": "Parthenios-Quellen",
+                                "toponym": "",
+                                "top_type": "324 - Flussquelle",
+                                "long_dec": 62.5,
+                                "long_deg": 62,
+                                "long_min": 0.5,
+                                "lat_dec": 42.33,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.33,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.07.07"
+                            },
+                            {
+                                "ID": "5.01.07.09",
+                                "toponym_ge": "Amastris",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 60.5,
+                                "long_deg": 60,
+                                "long_min": 0.5,
+                                "lat_dec": 43.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.5,
+                                "loc_name": "Asmasra",
+                                "loc_long": 32.381,
+                                "loc_lat": 41.737,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.07.08"
+                            },
+                            {
+                                "ID": "5.01.07.10",
+                                "toponym_ge": "Kromna",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 60.58,
+                                "long_deg": 60,
+                                "long_min": 0.58,
+                                "lat_dec": 43.58,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.58,
+                                "loc_name": "Tekkeönü",
+                                "loc_long": 32.65,
+                                "loc_lat": 41.814,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.07.09"
+                            },
+                            {
+                                "ID": "5.01.07.11",
+                                "toponym_ge": "Kytoros",
+                                "toponym": "",
+                                "top_type": "403 - Kuestenort",
+                                "long_dec": 60.75,
+                                "long_deg": 60,
+                                "long_min": 0.75,
+                                "lat_dec": 43.58,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.58,
+                                "loc_name": "Gideriz İskelesi",
+                                "loc_long": 32.837,
+                                "loc_lat": 41.852,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.07.10"
+                            }
+                        ],
+                        "prev_sec_ID": 4
+                    },
+                    {
+                        "sec_ID": 6,
+                        "textstring": "",
+                        "type": "neighbours_S",
+                        "tops": [
+                            {
+                                "ID": "5.01.08.01",
+                                "toponym_ge": "Eigentliches Asien",
+                                "toponym": "",
+                                "top_type": "210 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.08.02",
+                                "toponym_ge": "Rhyndakos",
+                                "toponym": "",
+                                "top_type": "220 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.08.01"
+                            }
+                        ],
+                        "prev_sec_ID": 5
+                    },
+                    {
+                        "sec_ID": 7,
+                        "textstring": "",
+                        "type": "border_S",
+                        "tops_table": [
+                            {
+                                "ID": "5.01.08.03",
+                                "toponym_ge": "Grenzpunkt (Pontos und Bithynien, eigentliches Asien, Galatien)",
+                                "toponym": "",
+                                "top_type": "310 - Grenzpunkte",
+                                "long_dec": 61.0,
+                                "long_deg": 61,
+                                "long_min": 0.0,
+                                "lat_dec": 41.25,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.25,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": ""
+                            }
+                        ],
+                        "prev_sec_ID": 6
+                    },
+                    {
+                        "sec_ID": 8,
+                        "textstring": "",
+                        "type": "neighbours_O",
+                        "tops": [
+                            {
+                                "ID": "5.01.09.01",
+                                "toponym_ge": "Galatien",
+                                "toponym": "",
+                                "top_type": "210 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.09.02",
+                                "toponym_ge": "Paphlagonien",
+                                "toponym": "",
+                                "top_type": "210 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.09.01"
+                            },
+                            {
+                                "ID": "5.01.09.04",
+                                "toponym_ge": "Kytoros",
+                                "toponym": "",
+                                "top_type": "260 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.09.02"
+                            },
+                            {
+                                "ID": "5.01.09.05",
+                                "toponym_ge": "Pontos Euxeinos",
+                                "toponym": "",
+                                "top_type": "200 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.09.04"
+                            }
+                        ],
+                        "prev_sec_ID": 7
+                    },
+                    {
+                        "sec_ID": 9,
+                        "textstring": "",
+                        "type": "border_O",
+                        "tops_table": [
+                            {
+                                "ID": "5.01.09.03",
+                                "toponym_ge": "Grenzpunkt (eigentliches Asien, Galatien, Pontos und Bithynien)",
+                                "toponym": "",
+                                "top_type": "310 - ",
+                                "long_dec": 61.0,
+                                "long_deg": 61,
+                                "long_min": 0.0,
+                                "lat_dec": 41.25,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.25,
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": ""
+                            }
+                        ],
+                        "prev_sec_ID": 8
+                    },
+                    {
+                        "sec_ID": 10,
+                        "textstring": "",
+                        "type": "mountains",
+                        "tops_table": [
+                            {
+                                "ID": "5.01.10.01",
+                                "toponym_ge": "Orminios (Mitte)",
+                                "toponym": "",
+                                "top_type": "340 - Berge (Spitzen, Endpunkte)/Waelder",
+                                "long_dec": 59.67,
+                                "long_deg": 59,
+                                "long_min": 0.67,
+                                "lat_dec": 42.67,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.67,
+                                "loc_name": "Köruglu Dağlari",
+                                "loc_long": 31.883,
+                                "loc_lat": 40.518,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.10.02",
+                                "toponym_ge": "Mysischer Olymp (Mitte)",
+                                "toponym": "",
+                                "top_type": "340 - Berge (Spitzen, Endpunkte)/Waelder",
+                                "long_dec": 57.0,
+                                "long_deg": 57,
+                                "long_min": 0.0,
+                                "lat_dec": 41.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.5,
+                                "loc_name": "Ulu Dağ",
+                                "loc_long": 29.22,
+                                "loc_lat": 40.071,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.10.01"
+                            }
+                        ],
+                        "prev_sec_ID": 9
+                    },
+                    {
+                        "sec_ID": 11,
+                        "textstring": "",
+                        "type": "peoples",
+                        "tops": [
+                            {
+                                "ID": "5.01.11.01",
+                                "toponym_ge": "Pontos Euxeinos (Ausgang)",
+                                "toponym": "",
+                                "top_type": "200 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.11.02",
+                                "toponym_ge": "Hypios",
+                                "toponym": "",
+                                "top_type": "220 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.11.01"
+                            },
+                            {
+                                "ID": "5.01.11.03",
+                                "toponym_ge": "Chalkedonier",
+                                "toponym": "",
+                                "top_type": "270 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.11.02"
+                            },
+                            {
+                                "ID": "5.01.11.04",
+                                "toponym_ge": "Herakleia am Pontos",
+                                "toponym": "",
+                                "top_type": "260 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.11.03"
+                            },
+                            {
+                                "ID": "5.01.11.05",
+                                "toponym_ge": "Kytoros",
+                                "toponym": "",
+                                "top_type": "260 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.11.04"
+                            },
+                            {
+                                "ID": "5.01.11.06",
+                                "toponym_ge": "Mariandyner",
+                                "toponym": "",
+                                "top_type": "270 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.11.05"
+                            },
+                            {
+                                "ID": "5.01.11.07",
+                                "toponym_ge": "Orminios",
+                                "toponym": "",
+                                "top_type": "240 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.11.06"
+                            },
+                            {
+                                "ID": "5.01.11.08",
+                                "toponym_ge": "Kaukonen",
+                                "toponym": "",
+                                "top_type": "270 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.11.07"
+                            },
+                            {
+                                "ID": "5.01.11.08",
+                                "toponym_ge": "Kykonen",
+                                "toponym": "",
+                                "top_type": "270 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.11.08"
+                            },
+                            {
+                                "ID": "5.01.12.01",
+                                "toponym_ge": "Chalkedonier",
+                                "toponym": "",
+                                "top_type": "270 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.11.08"
+                            },
+                            {
+                                "ID": "5.01.12.02",
+                                "toponym_ge": "Timonitis",
+                                "toponym": "",
+                                "top_type": "210 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.12.01"
+                            },
+                            {
+                                "ID": "5.01.12.03",
+                                "toponym_ge": "Bogdomanis",
+                                "toponym": "",
+                                "top_type": "210 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.12.02"
+                            },
+                            {
+                                "ID": "5.01.12.04",
+                                "toponym_ge": "Zygiane",
+                                "toponym": "",
+                                "top_type": "210 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.12.03"
+                            },
+                            {
+                                "ID": "5.01.12.04",
+                                "toponym_ge": "Zygianer",
+                                "toponym": "",
+                                "top_type": "270 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.12.04"
+                            }
+                        ],
+                        "prev_sec_ID": 10
+                    },
+                    {
+                        "sec_ID": 12,
+                        "textstring": "",
+                        "type": "inland",
+                        "region_tops": [
+                            {
+                                "ID": "5.01.13.01",
+                                "toponym_ge": "Bebryken",
+                                "toponym": "",
+                                "top_type": "270 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.13.07",
+                                "toponym_ge": "Hypios",
+                                "toponym": "",
+                                "top_type": "220 - ",
+                                "loc_name": "",
+                                "loc_long": "",
+                                "loc_lat": "",
+                                "identical_places": [],
+                                "prev_sec_ID": "5.01.13.01"
+                            }
+                        ],
+                        "tops_table": [
+                            {
+                                "ID": "5.01.13.02",
+                                "toponym_ge": "Libyssa",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 57.33,
+                                "long_deg": 57,
+                                "long_min": 0.33,
+                                "lat_dec": 42.25,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.25,
+                                "loc_name": "westlich Karaburun",
+                                "loc_long": 29.517,
+                                "loc_lat": 40.771,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.13.03",
+                                "toponym_ge": "Eriboia",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 57.17,
+                                "long_deg": 57,
+                                "long_min": 0.17,
+                                "lat_dec": 42.33,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.33,
+                                "loc_name": "Siedlung bei Segban Isk. oder İshaniye ",
+                                "loc_long": 29.806,
+                                "loc_lat": 40.665,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.13.02"
+                            },
+                            {
+                                "ID": "5.01.13.04",
+                                "toponym_ge": "Gallika ",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 57.75,
+                                "long_deg": 57,
+                                "long_min": 0.75,
+                                "lat_dec": 42.42,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.42,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.13.03"
+                            },
+                            {
+                                "ID": "5.01.13.05",
+                                "toponym_ge": "Tatavion",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 57.75,
+                                "long_deg": 57,
+                                "long_min": 0.75,
+                                "lat_dec": 42.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.0,
+                                "loc_name": "Arıcaklar",
+                                "loc_long": 30.372,
+                                "loc_lat": 40.274,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.13.04"
+                            },
+                            {
+                                "ID": "5.01.13.06",
+                                "toponym_ge": "Prusa am Hypios",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 58.5,
+                                "long_deg": 58,
+                                "long_min": 0.5,
+                                "lat_dec": 42.58,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.58,
+                                "loc_name": "Konuralp",
+                                "loc_long": 31.155,
+                                "loc_lat": 40.887,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.13.05"
+                            },
+                            {
+                                "ID": "5.01.13.08",
+                                "toponym_ge": "Dedakana",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 59.0,
+                                "long_deg": 59,
+                                "long_min": 0.0,
+                                "lat_dec": 42.42,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.42,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.13.06"
+                            },
+                            {
+                                "ID": "5.01.13.09",
+                                "toponym_ge": "Protomakrai ",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 58.75,
+                                "long_deg": 58,
+                                "long_min": 0.75,
+                                "lat_dec": 42.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.0,
+                                "loc_name": "Sarihocalar",
+                                "loc_long": 30.518,
+                                "loc_lat": 40.284,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.13.08"
+                            },
+                            {
+                                "ID": "5.01.13.10",
+                                "toponym_ge": "Bithynion = Klaudiopolis",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 59.33,
+                                "long_deg": 59,
+                                "long_min": 0.33,
+                                "lat_dec": 42.75,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.75,
+                                "loc_name": "Bolu",
+                                "loc_long": 31.609,
+                                "loc_lat": 40.708,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.13.09"
+                            },
+                            {
+                                "ID": "5.01.14.01",
+                                "toponym_ge": "Flaviopolis = Krateia",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 60.0,
+                                "long_deg": 60,
+                                "long_min": 0.0,
+                                "lat_dec": 43.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.0,
+                                "loc_name": "Gerede",
+                                "loc_long": 32.196,
+                                "loc_lat": 40.775,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.13.10"
+                            },
+                            {
+                                "ID": "5.01.14.02",
+                                "toponym_ge": "Timaia",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 59.75,
+                                "long_deg": 59,
+                                "long_min": 0.75,
+                                "lat_dec": 42.33,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.33,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.14.01"
+                            },
+                            {
+                                "ID": "5.01.14.03",
+                                "toponym_ge": "Klitai",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 60.5,
+                                "long_deg": 60,
+                                "long_min": 0.5,
+                                "lat_dec": 43.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.0,
+                                "loc_name": null,
+                                "loc_long": null,
+                                "loc_lat": null,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.14.02"
+                            },
+                            {
+                                "ID": "5.01.14.04",
+                                "toponym_ge": "Laganeia",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 60.58,
+                                "long_deg": 60,
+                                "long_min": 0.58,
+                                "lat_dec": 42.5,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.5,
+                                "loc_name": "Dikmen Hüyük",
+                                "loc_long": 32.033,
+                                "loc_lat": 39.99,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.14.03"
+                            },
+                            {
+                                "ID": "5.01.14.05",
+                                "toponym_ge": "Nikaia*",
+                                "toponym": "",
+                                "top_type": "414 - Polis im Binnenland",
+                                "long_dec": 58.0,
+                                "long_deg": 58,
+                                "long_min": 0.0,
+                                "lat_dec": 42.25,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.25,
+                                "loc_name": "İznik",
+                                "loc_long": 29.72,
+                                "loc_lat": 40.43,
+                                "identical_places": [
+                                    "8.17.07.01"
+                                ],
+                                "prev_sec_ID": "5.01.14.04"
+                            },
+                            {
+                                "ID": "5.01.14.06",
+                                "toponym_ge": "Kaisareia = Smyraleia",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 56.67,
+                                "long_deg": 56,
+                                "long_min": 0.67,
+                                "lat_dec": 41.67,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.67,
+                                "loc_name": "Tahtalı",
+                                "loc_long": 28.88,
+                                "loc_lat": 40.174,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.14.05"
+                            },
+                            {
+                                "ID": "5.01.14.07",
+                                "toponym_ge": "Prusa am Olymp",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 57.0,
+                                "long_deg": 57,
+                                "long_min": 0.0,
+                                "lat_dec": 41.67,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.67,
+                                "loc_name": "Bursa",
+                                "loc_long": 29.064,
+                                "loc_lat": 40.191,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.14.06"
+                            },
+                            {
+                                "ID": "5.01.14.09",
+                                "toponym_ge": "Agrilion",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 57.5,
+                                "long_deg": 57,
+                                "long_min": 0.5,
+                                "lat_dec": 41.67,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.67,
+                                "loc_name": "Gökçesu?",
+                                "loc_long": 29.774,
+                                "loc_lat": 40.201,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.14.07"
+                            },
+                            {
+                                "ID": "5.01.14.10",
+                                "toponym_ge": "Dableis",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 58.67,
+                                "long_deg": 58,
+                                "long_min": 0.67,
+                                "lat_dec": 41.67,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.67,
+                                "loc_name": "near Çayköy",
+                                "loc_long": 30.76,
+                                "loc_lat": 40.248,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.14.09"
+                            },
+                            {
+                                "ID": "5.01.14.11",
+                                "toponym_ge": "Dadastana",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 59.5,
+                                "long_deg": 59,
+                                "long_min": 0.5,
+                                "lat_dec": 41.75,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 41,
+                                "lat_min": 0.75,
+                                "loc_name": "near Karahisar",
+                                "loc_long": 31.176,
+                                "loc_lat": 40.187,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.14.10"
+                            },
+                            {
+                                "ID": "5.01.14.12",
+                                "toponym_ge": "Iuliopolis ",
+                                "toponym": "",
+                                "top_type": "434 - Stadt im Binnenland",
+                                "long_dec": 60.17,
+                                "long_deg": 60,
+                                "long_min": 0.17,
+                                "lat_dec": 42.0,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 42,
+                                "lat_min": 0.0,
+                                "loc_name": "Sarılar köprüsü (Eskişehir)",
+                                "loc_long": 31.716,
+                                "loc_lat": 40.073,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.14.11"
+                            }
+                        ],
+                        "prev_sec_ID": 11
+                    },
+                    {
+                        "sec_ID": 13,
+                        "textstring": "",
+                        "type": "islands",
+                        "tops_table": [
+                            {
+                                "ID": "5.01.15.01",
+                                "toponym_ge": "Kyaneen (östliche)",
+                                "toponym": "",
+                                "top_type": "350 - Inselpunkte",
+                                "long_dec": 56.5,
+                                "long_deg": 56,
+                                "long_min": 0.5,
+                                "lat_dec": 43.42,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.42,
+                                "loc_name": "Örektaşi",
+                                "loc_long": 29.158,
+                                "loc_lat": 41.223,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": ""
+                            },
+                            {
+                                "ID": "5.01.15.02",
+                                "toponym_ge": "Daphnusa = Thynias",
+                                "toponym": "",
+                                "top_type": "350 - Inselpunkte",
+                                "long_dec": 57.67,
+                                "long_deg": 57,
+                                "long_min": 0.67,
+                                "lat_dec": 43.33,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.33,
+                                "loc_name": "Kefken Adası",
+                                "loc_long": 30.261,
+                                "loc_lat": 41.215,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.15.01"
+                            },
+                            {
+                                "ID": "5.01.15.03",
+                                "toponym_ge": "Klippen Erythinoi",
+                                "toponym": "",
+                                "top_type": "350 - Inselpunkte",
+                                "long_dec": 58.5,
+                                "long_deg": 58,
+                                "long_min": 0.5,
+                                "lat_dec": 43.25,
+                                "lat_hemisphere": "N",
+                                "lat_deg": 43,
+                                "lat_min": 0.25,
+                                "loc_name": "Çakraz",
+                                "loc_long": 32.4679,
+                                "loc_lat": 41.7633,
+                                "identical_places": [
+                                    null
+                                ],
+                                "prev_sec_ID": "5.01.15.02"
+                            }
+                        ],
+                        "prev_sec_ID": 12
+                    }
+                ],
+                "prev_chap_ID": ""
+            },
+            {
+                "chap_ID": 2,
+                "secs": [],
+                "prev_chap_ID": 1
+            },
+            {
+                "chap_ID": 3,
+                "secs": [],
+                "prev_chap_ID": 2
+            },
+            {
+                "chap_ID": 4,
+                "secs": [],
+                "prev_chap_ID": 3
+            },
+            {
+                "chap_ID": 5,
+                "secs": [],
+                "prev_chap_ID": 4
+            },
+            {
+                "chap_ID": 6,
+                "secs": [],
+                "prev_chap_ID": 5
+            },
+            {
+                "chap_ID": 7,
+                "secs": [],
+                "prev_chap_ID": 6
+            },
+            {
+                "chap_ID": 8,
+                "secs": [],
+                "prev_chap_ID": 7
+            }
+        ],
+        "prev_book_ID": 4
+    }
+]

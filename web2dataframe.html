@@ -1,0 +1,1135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Reading data from external databases &mdash; Computational Humanities -- Topoi 0.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/better.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Computational Humanities -- Topoi 0.5 documentation" href="index.html" />
+    <link rel="up" title="Notebooks" href="notebook.html" />
+    <link rel="prev" title="Capella manuscript analysis" href="capella_medievaldiagrams.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
+  <body role="document">
+    <header id="pageheader"><h1><a href="index.html ">
+        Computational Humanities -- Topoi 0.5 documentation
+    </a></h1></header>
+  <div class="related top">
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="capella_medievaldiagrams.html" title="Previous document">Capella manuscript analysis</a>
+        </li>
+    </ul>
+  </nav>
+  <nav id="breadcrumbs">
+    <ul>
+      <li><a href="index.html">Computational Humanities -- Topoi 0.5 documentation</a></li>
+      <li>
+        <a href="notebook.html">Notebooks</a>
+      </li> 
+    </ul>
+  </nav>
+  </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput > div,
+div.nbinput div[class^=highlight],
+div.nbinput div[class^=highlight] pre,
+div.nboutput,
+div.nboutput > div,
+div.nboutput div[class^=highlight],
+div.nboutput div[class^=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class^=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput > :first-child pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput > :first-child pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput > :first-child[class^=highlight],
+div.nboutput > :first-child[class^=highlight],
+div.nboutput > :first-child {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+
+/* input/output area */
+div.nbinput > :nth-child(2)[class^=highlight],
+div.nboutput > :nth-child(2),
+div.nboutput > :nth-child(2)[class^=highlight] {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+
+/* input area */
+div.nbinput > :nth-child(2)[class^=highlight] {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput  > :nth-child(2).stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="section" id="Reading-data-from-external-databases">
+<h1>Reading data from external databases<a class="headerlink" href="#Reading-data-from-external-databases" title="Permalink to this headline">¶</a></h1>
+<p>To import external data into a pandas dataframe, we use beautifulsoup4.
+The source is the JORDANUS database of medieval scientific documents,
+maintained by <a class="reference external" href="http://jordanus.badw.de">http://jordanus.badw.de</a>.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://jordanus.badw.de/cgi-bin/lrz_jord-search.pl?sprache=en&amp;datenbank=ptolemaeus&amp;ausgabe=dhstext&amp;ausdateiformat=txt&amp;listpos=0&amp;listen=keine&amp;listlet=keiner&amp;fn=t52a56.f&amp;fi=Martianus+Capella&#39;</span>
+
+<span class="n">r</span>  <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="container">
+</div>
+<div class="stderr container">
+<div class="highlight"><pre>
+/usr/lib/python3/dist-packages/bs4/__init__.py:166: UserWarning: No parser was explicitly specified, so I&#39;m using the best available HTML parser for this system (&#34;lxml&#34;). This usually isn&#39;t a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+To get rid of this warning, change this:
+
+ BeautifulSoup([your markup])
+
+to this:
+
+ BeautifulSoup([your markup], &#34;lxml&#34;)
+
+  markup_type=markup_type))
+</pre></div></div>
+</div>
+<p>Since the data is organized in a html table, we have to search for the
+table environments and the included columns and rows. Each column is
+translated in a key:value pair of a dictionary.</p>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">tables</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">table_body</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table_body</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">)</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">ele</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">cols</span><span class="p">:</span>
+            <span class="n">item</span><span class="p">[</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The dictionary is read as a dataframe.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[4]:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Index([&#39;10/3&#39;, &#39;11/2&#39;, &#39;12/3&#39;, &#39;12/4&#39;, &#39;13/2&#39;, &#39;13/4&#39;, &#39;13/5&#39;, &#39;13/6&#39;, &#39;14/3&#39;,
+       &#39;15/9&#39;,
+       ...
+       &#39;Source&#39;, &#39;Source&#39;s source&#39;, &#39;Stype of writing&#39;, &#39;Subject 1&#39;,
+       &#39;Subject 2&#39;, &#39;T &amp; K&#39;, &#39;Type of ms. 2&#39;, &#39;Type of source&#39;, &#39;Watermarks&#39;,
+       &#39;Width of columns&#39;],
+      dtype=&#39;object&#39;, length=182)
+</pre></div>
+</div>
+</div>
+<p>To reduce the needed columns, the keys are given as a list to the
+dataframe.</p>
+<div class="nbinput container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Author standard&#39;</span><span class="p">,</span><span class="s1">&#39;Short title&#39;</span><span class="p">,</span><span class="s1">&#39;Short title st.&#39;</span><span class="p">,</span><span class="s1">&#39;Library&#39;</span><span class="p">,</span><span class="s1">&#39;Language&#39;</span><span class="p">,</span><span class="s1">&#39;Folio no.&#39;</span><span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;Century&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>Out[5]:
+</pre></div>
+</div>
+<div class="container">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Author standard</th>
+      <th>Short title</th>
+      <th>Short title st.</th>
+      <th>Library</th>
+      <th>Language</th>
+      <th>Folio no.</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Century</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Macrobius\nMartianus Capella</td>
+      <td>NaN</td>
+      <td>Selections from Macrobius (part.)</td>
+      <td>The Library of Robert B. Honeyman Jr.</td>
+      <td>Latin</td>
+      <td>79r-80v</td>
+      <td>San Juan Capistrano</td>
+      <td>USA</td>
+      <td>12\n13\n14\n15</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Martianus Capella\nMacrobius (attrib.)</td>
+      <td>NaN</td>
+      <td>De nuptiis Philologiae et Mercurii (part.)</td>
+      <td>Library of the Hispanic Society of America</td>
+      <td>Latin</td>
+      <td>1r-6v</td>
+      <td>New York</td>
+      <td>USA</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>Annotations de genre divers</td>
+      <td>Stedelijke Openbare Bibliotheek</td>
+      <td>Latin</td>
+      <td>309r-311r</td>
+      <td>Brugge</td>
+      <td>Belgium</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Martianus Capella</td>
+      <td>Recueil de traités scientifiques</td>
+      <td>De nuptiis Philologiae et Mercurii</td>
+      <td>Bibliothèque Royale</td>
+      <td>Latin</td>
+      <td>13v-196v</td>
+      <td>Bruxelles</td>
+      <td>Belgium</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Philologiae et Mercurii (part., inc.)</td>
+      <td>Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>65r-79r</td>
+      <td>Bamberg</td>
+      <td>Germany</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Philologiae et Mercurii</td>
+      <td>Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>NaN</td>
+      <td>Bamberg</td>
+      <td>Germany</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Martianus Capella\nMacrobius (?)</td>
+      <td>Opera gromatica, astronomica, historica cum Ex...</td>
+      <td>Com. in somn. Scip. (?)\nArgumentum quo magnit...</td>
+      <td>Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>28v-29</td>
+      <td>Bamberg</td>
+      <td>Germany</td>
+      <td>11\n9\n10</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Martianus Capella</td>
+      <td>Mathematisch-astronomische Sammelhs.</td>
+      <td>De nuptiis Mercurii cum Philologia, lib. VIII</td>
+      <td>Staatsbibliothek zu Berlin</td>
+      <td>Latin</td>
+      <td>3</td>
+      <td>Berlin</td>
+      <td>Germany</td>
+      <td>12/II\n12</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Mercurii et Philologiae libri I et II</td>
+      <td>Bayerische Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>46-55</td>
+      <td>München</td>
+      <td>Germany</td>
+      <td>11/12</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Ars geometrica et astronomica</td>
+      <td>Bayerische Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>48v-69v</td>
+      <td>München</td>
+      <td>Germany</td>
+      <td>9\n10</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De arithmetica liber VII\nLiber (VII) de arith...</td>
+      <td>Bayerische Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>79v-91r</td>
+      <td>München</td>
+      <td>Germany</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Remigius Antissiodorensis</td>
+      <td>NaN</td>
+      <td>Commentarii in Martiani Capellae lib. III de G...</td>
+      <td>Bayerische Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>54</td>
+      <td>München</td>
+      <td>Germany</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>Dialectica (De nuptiis philologiae et Mercurii...</td>
+      <td>Bayerische Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>126v-153v</td>
+      <td>München</td>
+      <td>Germany</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Philologiae et Mercurii libri VIIII</td>
+      <td>Bayerische Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>70</td>
+      <td>München</td>
+      <td>Germany</td>
+      <td>10 (70 sqq.)\n14</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Philologiae et Mercurii libri I et II</td>
+      <td>Bayerische Staatsbibliothek</td>
+      <td>Latin</td>
+      <td>NaN</td>
+      <td>München</td>
+      <td>Germany</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>Astronomia (exc.)</td>
+      <td>Herzog August Bibliothek</td>
+      <td>NaN</td>
+      <td>52v-54r</td>
+      <td>Wolfenbüttel</td>
+      <td>Germany</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>Vocabula et dictiones. De astrologia. De geome...</td>
+      <td>Herzog August Bibliothek</td>
+      <td>NaN</td>
+      <td>180r-205v</td>
+      <td>Wolfenbüttel</td>
+      <td>Germany</td>
+      <td>15/16</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>Astronomia &lt;De nuptiis Philologiae et Mercurii...</td>
+      <td>Wissenschaftliche Allgemeinbibliothek</td>
+      <td>Latin</td>
+      <td>1-14</td>
+      <td>Erfurt</td>
+      <td>Germany</td>
+      <td>12 ex.\n13\n14</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Forschungs- und Landesbibliothek</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gotha</td>
+      <td>Germany</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Remigius de Auxerre (com.)</td>
+      <td>NaN</td>
+      <td>Commentarius in de nuptiis Mercurii et Philolo...</td>
+      <td>Bibliothèque Municipale</td>
+      <td>Latin</td>
+      <td>23r-</td>
+      <td>Auxerre</td>
+      <td>France</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Philologiae et Mercurii (part.)</td>
+      <td>Bibliothèque Municipale</td>
+      <td>Latin\nLatin</td>
+      <td>83r-</td>
+      <td>Avranches</td>
+      <td>France</td>
+      <td>12\n13\n14\n12\n13\n12/13</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Philologiae et Mercurii Liber VIII ...</td>
+      <td>Bibliothèque Municipale</td>
+      <td>Latin\nLatin\nLatin</td>
+      <td>40r-46v\n40r-\n(7 Blätter)\n40r-51v</td>
+      <td>Avranches</td>
+      <td>France</td>
+      <td>12\n12\n12 ex.</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Remigius Antissiodorensis (com.)</td>
+      <td>NaN</td>
+      <td>Commentum in libro de nuptiis Philologiae et M...</td>
+      <td>Bibliothèque Municipale</td>
+      <td>Latin\nLatin\nLatin</td>
+      <td>17r-101v\n17r-</td>
+      <td>Avranches</td>
+      <td>France</td>
+      <td>11\n11\n11</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis philologiae et Mercurii</td>
+      <td>Bibliothèque Municipale</td>
+      <td>Latin</td>
+      <td>1r-</td>
+      <td>Chartres</td>
+      <td>France</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis philologiae et Mercurii</td>
+      <td>Bibliothèque Municipale</td>
+      <td>Latin</td>
+      <td>1r-</td>
+      <td>Chartres</td>
+      <td>France</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Martianus Capella\nMartianus Capella</td>
+      <td>Theodorici Carnotensis Bibliotheca (Second Vol...</td>
+      <td>De nuptiis Mercurii et philologiae (exc.)</td>
+      <td>Bibliothèque Municipale</td>
+      <td>Latin</td>
+      <td>114v-\n114v-122v</td>
+      <td>Chartres</td>
+      <td>France</td>
+      <td>12\n12</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De mensura lunae</td>
+      <td>Bibliothèque de la Faculté de Médicine</td>
+      <td>Latin</td>
+      <td>52v</td>
+      <td>Montpellier</td>
+      <td>France</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Martianus Capella\nRemigius (com.)</td>
+      <td>De nuptiis von Martianus Capella mit dem Komme...</td>
+      <td>De nuptiis philologiae et Mercurii</td>
+      <td>Bibliothèque Ste. Geneviève</td>
+      <td>Latin</td>
+      <td>NaN</td>
+      <td>Paris</td>
+      <td>France</td>
+      <td>13 in.</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Martianus Capella\nRemigius (com.)</td>
+      <td>De nuptiis von Martianus Capella mit dem Komme...</td>
+      <td>De nuptiis philologiae et Mercurii</td>
+      <td>Bibliothèque Ste. Geneviève</td>
+      <td>Latin\nLatin</td>
+      <td>89ra-112vb\n83r-</td>
+      <td>Paris</td>
+      <td>France</td>
+      <td>13 in.\n13 in.</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Martianus Capella</td>
+      <td>Florilegium</td>
+      <td>De nuptiis Mercurii et Philologiae (exc.)</td>
+      <td>Bibliothèque Nationale</td>
+      <td>Latin\nLatin</td>
+      <td>87v</td>
+      <td>Paris</td>
+      <td>France</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis philologiae et Mercurii (part.)</td>
+      <td>Bibliothèque Nationale et Universitaire</td>
+      <td>Latin\nLatin</td>
+      <td>133r-</td>
+      <td>Strasbourg</td>
+      <td>France</td>
+      <td>10\n10</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>NaN</td>
+      <td>Recueil</td>
+      <td>Expositio super librum de nuptiis Mercurii et ...</td>
+      <td>Bibliothèque Municipale</td>
+      <td>Latin</td>
+      <td>(1 page)</td>
+      <td>Troyes</td>
+      <td>France</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>NaN</td>
+      <td>Recueil</td>
+      <td>Harmonica</td>
+      <td>Bibliothèque Municipale</td>
+      <td>Latin</td>
+      <td>NaN</td>
+      <td>Verdun</td>
+      <td>France</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>Martianus Capella</td>
+      <td>Palladius etc.</td>
+      <td>NaN</td>
+      <td>Trinity College</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Cambridge</td>
+      <td>United Kingdom</td>
+      <td>12 ex.</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>British Museum</td>
+      <td>NaN</td>
+      <td>51v-2r</td>
+      <td>London</td>
+      <td>United Kingdom</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>British Museum</td>
+      <td>Latin</td>
+      <td>38r-9v</td>
+      <td>London</td>
+      <td>United Kingdom</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Martianus Capella</td>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>Royal Society</td>
+      <td>Latin</td>
+      <td>1-9</td>
+      <td>London</td>
+      <td>United Kingdom</td>
+      <td>13 ex.</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>Martianus Capella</td>
+      <td>Astrologica</td>
+      <td>NaN</td>
+      <td>Middle Temple</td>
+      <td>Latin\nGerman</td>
+      <td>94v-96</td>
+      <td>London</td>
+      <td>United Kingdom</td>
+      <td>14 ex.\n15 in.</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Bodleian Library</td>
+      <td>Latin</td>
+      <td>160-</td>
+      <td>Oxford</td>
+      <td>United Kingdom</td>
+      <td>12 med.</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Bodleian Library</td>
+      <td>Latin</td>
+      <td>194-</td>
+      <td>Oxford</td>
+      <td>United Kingdom</td>
+      <td>13/II</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>Remigius Autissiodorensis</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Bodleian Library</td>
+      <td>Latin</td>
+      <td>NaN</td>
+      <td>Oxford</td>
+      <td>United Kingdom</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Bodleian Library</td>
+      <td>Latin</td>
+      <td>163-</td>
+      <td>Oxford</td>
+      <td>United Kingdom</td>
+      <td>12\n13</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis I-IX</td>
+      <td>Biblioteca Medicea Laurenziana</td>
+      <td>NaN</td>
+      <td>1r-116v</td>
+      <td>Firenze</td>
+      <td>Italy</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis VIII, 814-887</td>
+      <td>Biblioteca Nazionale Centrale</td>
+      <td>Latin</td>
+      <td>213r-218r</td>
+      <td>Firenze</td>
+      <td>Italy</td>
+      <td>13 ex.</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>De topicis ex libris Cassiodori et Martiani Ca...</td>
+      <td>Biblioteca Ambrosiana</td>
+      <td>Latin</td>
+      <td>46v-51v</td>
+      <td>Milano</td>
+      <td>Italy</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De septem artibus liberalibus</td>
+      <td>Biblioteca Ambrosiana</td>
+      <td>Latin</td>
+      <td>60-100</td>
+      <td>Milano</td>
+      <td>Italy</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De Nupciis Mercurii et Philologye</td>
+      <td>Biblioteca Apostolica Vaticana</td>
+      <td>Latin</td>
+      <td>1r-53v</td>
+      <td>Città del Vaticano</td>
+      <td>Vatican State</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>Martianus Capella</td>
+      <td>Quadriviumshandschrift</td>
+      <td>De astronomia (i. e. Liber VIII, De nuptiis ph...</td>
+      <td>Codices Palatini Latini</td>
+      <td>Latin</td>
+      <td>125v-127r</td>
+      <td>Città del Vaticano</td>
+      <td>Vatican State</td>
+      <td>12-16</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Biblioteca Apostolica Vaticana</td>
+      <td>Latin</td>
+      <td>93ff.</td>
+      <td>Città del Vaticano</td>
+      <td>Vatican State</td>
+      <td>13/14</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De rhetorica</td>
+      <td>Biblioteca Apostolica Vaticana</td>
+      <td>Latin</td>
+      <td>47v-</td>
+      <td>Città del Vaticano</td>
+      <td>Vatican State</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>Martianus Capella\nAurelius Augustinus\nBoethius</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Biblioteca Capitolare</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Ivrea</td>
+      <td>Italy</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>Martianus Capella\nMartianus Capella</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Kongelige Bibliotek</td>
+      <td>Latin</td>
+      <td>161r-163v\n&lt;?&gt; -163v</td>
+      <td>København</td>
+      <td>Denmark</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Philologiae cum Mercurio</td>
+      <td>Bibliotheek der Universiteit</td>
+      <td>Latin</td>
+      <td>NaN</td>
+      <td>Leiden</td>
+      <td>Netherlands</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Philologiae cum Mercurio</td>
+      <td>Bibliotheek der Universiteit</td>
+      <td>Latin</td>
+      <td>NaN</td>
+      <td>Leiden</td>
+      <td>Netherlands</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>Satyrae de septem artibus liberalibus, libri 5...</td>
+      <td>Österreichische Nationalbibliothek</td>
+      <td>Latin</td>
+      <td>1r-16v</td>
+      <td>Wien</td>
+      <td>Austria</td>
+      <td>9-14</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>Satyra de septem artibus liber 1 et 2</td>
+      <td>Österreichische Nationalbibliothek</td>
+      <td>Latin</td>
+      <td>NaN</td>
+      <td>Wien</td>
+      <td>Austria</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De septem artibus liberalibus liber 4-9</td>
+      <td>Österreichische Nationalbibliothek</td>
+      <td>Latin</td>
+      <td>NaN</td>
+      <td>Wien</td>
+      <td>Austria</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptiis Mercurii et philologiae libri duo</td>
+      <td>Österreichische Nationalbibliothek</td>
+      <td>Latin</td>
+      <td>56v-70r</td>
+      <td>Wien</td>
+      <td>Austria</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>Martianus Capella</td>
+      <td>Varia miscellanea (varii tractatus de musica) ...</td>
+      <td>De Nuptiis Philologiae et Mercurii Liber VIII</td>
+      <td>Österreichische Nationalbibliothek</td>
+      <td>Latin</td>
+      <td>162r-166r</td>
+      <td>Wien</td>
+      <td>Austria</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>Martianus Capella</td>
+      <td>NaN</td>
+      <td>De nuptis Philologiae et Mercurii</td>
+      <td>Real Biblioteca de San Lorenzo</td>
+      <td>Latin</td>
+      <td>1</td>
+      <td>El Escorial</td>
+      <td>Spain</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+<p>82 rows × 9 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="capella_medievaldiagrams.html"
+                        title="previous chapter">Capella manuscript analysis</a></p>
+<div class="sourcelink">
+  <a href="_sources/web2dataframe.ipynb.txt" rel="nofollow">
+    Show page source
+  </a>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="related bottom">
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="capella_medievaldiagrams.html" title="Previous document">Capella manuscript analysis</a>
+        </li>
+    </ul>
+  </nav>
+  <nav id="breadcrumbs">
+    <ul>
+      <li><a href="index.html">Computational Humanities -- Topoi 0.5 documentation</a></li>
+      <li>
+        <a href="notebook.html">Notebooks</a>
+      </li> 
+    </ul>
+  </nav>
+  </div>
+  <footer id="pagefooter">&copy; 2016, Gerd Grasshoff, Malte Vogl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a>
+      1.5a0
+        with the <a href="http://github.com/irskep/sphinx-better-theme">
+          better</a> theme.
+
+  </footer>
+
+  
+  </body>
+</html>

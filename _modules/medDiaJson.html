@@ -1,0 +1,626 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>medDiaJson &mdash; Computational Humanities -- Topoi 0.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/better.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Computational Humanities -- Topoi 0.5 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
+  <body role="document">
+    <header id="pageheader"><h1><a href="../index.html ">
+        Computational Humanities -- Topoi 0.5 documentation
+    </a></h1></header>
+  <div class="related top">
+  <nav id="rellinks">
+    <ul>
+    </ul>
+  </nav>
+  <nav id="breadcrumbs">
+    <ul>
+      <li><a href="../index.html">Computational Humanities -- Topoi 0.5 documentation</a></li>
+      <li>
+        <a href="index.html">Module code</a>
+      </li> 
+    </ul>
+  </nav>
+  </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for medDiaJson</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Docstrings are accessed by adding a question mark e.g. uniqueValues?</span>
+
+<span class="c1">#################</span>
+<span class="c1"># Preliminaries #</span>
+<span class="c1">#################</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas.io.json</span> <span class="k">import</span> <span class="n">json_normalize</span>
+
+<span class="c1"># To always find data, relative paths are made absolute.</span>
+<span class="c1"># Since the structure of projects is Project/data Project/program(testing)</span>
+<span class="c1"># this should work on any system.</span>
+
+<span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
+<span class="n">rel_path</span> <span class="o">=</span> <span class="s1">&#39;../data/MedievalDiagrams_DB.json&#39;</span>
+<span class="n">abs_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">)</span>
+
+<span class="n">data_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">abs_file_path</span><span class="p">)</span>
+
+<span class="c1"># First load with json.load().</span>
+<span class="c1"># Manipulations are made using pandas.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+
+<span class="n">dfInstances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;instances&#39;</span><span class="p">][</span><span class="s1">&#39;diaTyp&#39;</span><span class="p">])</span>
+<span class="c1">#####################################</span>
+<span class="c1">#Open image for diagramID in new tab#</span>
+<span class="c1">#####################################</span>
+<span class="kn">import</span> <span class="nn">webbrowser</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">HTML</span>
+
+<div class="viewcode-block" id="id2image"><a class="viewcode-back" href="../general.html#medDiaJson.id2image">[docs]</a><span class="k">def</span> <span class="nf">id2image</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">diaID</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Opens link to picture of diagram type inline.</span>
+
+<span class="sd">    :param diaID: diagram ID</span>
+<span class="sd">    :type diaID: string</span>
+<span class="sd">    :param dataframe: dataframe</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+
+<span class="sd">    :returns: webpage</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url_start</span> <span class="o">=</span> <span class="s1">&#39;http://repository.edition-topoi.org/digilib/digilib.html?fn=/MAPD/ReposMAPD/EastwoodCollection/&#39;</span>
+    <span class="n">url_end</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;diaID&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">diaID</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;diaURL&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe src=&#39;</span> <span class="o">+</span> <span class="n">url_start</span> <span class="o">+</span> <span class="n">url_end</span> <span class="o">+</span> <span class="s1">&#39; + width=100</span><span class="si">% he</span><span class="s1">ight=460&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span></div>
+
+<span class="c1"># def type2image(dataframe, diaType):</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     Opens link to picture of diagram inline.</span>
+<span class="c1">#</span>
+<span class="c1">#     :param diaType: diagram type</span>
+<span class="c1">#     :type diaType: string</span>
+<span class="c1">#     :param dataframe: dataframe</span>
+<span class="c1">#     :type dataframe: pandas.DataFrame</span>
+<span class="c1">#</span>
+<span class="c1">#     :returns: inline webpage</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     url_start = &#39;http://repository.edition-topoi.org/digilib/digilib.html?fn=/MAPD/ReposMAPD/EastwoodCollection/&#39;</span>
+<span class="c1">#     url_end = dfInstances[dfInstances[&#39;diaTyp&#39;]==1.0][&#39;diagramURL&#39;][0]</span>
+<span class="c1">#     return HTML(&#39;&lt;iframe src=&#39; + url_start + url_end + &#39; + width=100% height=460&gt;&lt;/iframe&gt;&#39;)</span>
+
+<div class="viewcode-block" id="altId2image"><a class="viewcode-back" href="../general.html#medDiaJson.altId2image">[docs]</a><span class="k">def</span> <span class="nf">altId2image</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">diaID</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Opens browsertab with link to picture of diagram one level higher</span>
+
+<span class="sd">    :param diaID: diagram ID</span>
+<span class="sd">    :type diaID: string</span>
+<span class="sd">    :param dataframe: dataframe</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+
+<span class="sd">    :returns: webpage</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url_start</span> <span class="o">=</span> <span class="s1">&#39;http://repository.edition-topoi.org/collection/MAPD/single/&#39;</span>
+    <span class="n">url_end</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">diaID</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()])</span>
+    <span class="k">return</span> <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url_start</span> <span class="o">+</span> <span class="n">url_end</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="manID2image"><a class="viewcode-back" href="../general.html#medDiaJson.manID2image">[docs]</a><span class="k">def</span> <span class="nf">manID2image</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">manID</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Opens browsertab with link to startpage of manuscript</span>
+
+<span class="sd">    :param diaID: manuscript ID</span>
+<span class="sd">    :type diaID: string</span>
+<span class="sd">    :param dataframe: dataframe</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+
+<span class="sd">    :returns: webpage</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url_start</span> <span class="o">=</span> <span class="s1">&#39;http://repository.edition-topoi.org/collection/MAPD/object/&#39;</span>
+    <span class="n">url_end</span> <span class="o">=</span>  <span class="n">dataframe</span><span class="p">[</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;manID&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">manID</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;manURL&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url_start</span> <span class="o">+</span> <span class="n">url_end</span><span class="p">)</span></div>
+
+<span class="c1">#######################</span>
+<span class="c1"># Load Citeables      #</span>
+<span class="c1">#######################</span>
+
+
+
+
+<span class="c1">#######################</span>
+<span class="c1"># Normalize JSON file #</span>
+<span class="c1">#######################</span>
+
+<div class="viewcode-block" id="level0"><a class="viewcode-back" href="../general.html#medDiaJson.level0">[docs]</a><span class="k">def</span> <span class="nf">level0</span><span class="p">(</span><span class="n">manuscr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalization on manuscript level.</span>
+<span class="sd">    Axis &#39;texts&#39; is dropped.</span>
+
+<span class="sd">    :param manuscr: Manuscript number</span>
+<span class="sd">    :type manuscr: int</span>
+
+<span class="sd">    :returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;manuscripts&#39;</span><span class="p">][</span><span class="n">manuscr</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;texts&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Out of range.&quot;</span><span class="p">)</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="level1"><a class="viewcode-back" href="../general.html#medDiaJson.level1">[docs]</a><span class="k">def</span> <span class="nf">level1</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalization on text level.</span>
+<span class="sd">    Axis &#39;pages&#39; is dropped.</span>
+
+<span class="sd">    :param manuscr: Manuscript number</span>
+<span class="sd">    :param text: Text number</span>
+<span class="sd">    :type manuscr: int</span>
+<span class="sd">    :type text: int</span>
+
+<span class="sd">    :returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;manuscripts&#39;</span><span class="p">][</span><span class="n">manuscr</span><span class="p">][</span><span class="s1">&#39;texts&#39;</span><span class="p">]</span>\
+                             <span class="p">[</span><span class="n">text</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;pages&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="level2"><a class="viewcode-back" href="../general.html#medDiaJson.level2">[docs]</a><span class="k">def</span> <span class="nf">level2</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">page</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalization on pages level.</span>
+<span class="sd">    Axis &#39;diagrams&#39; is dropped.</span>
+
+<span class="sd">    :param manuscr: Manuscript number</span>
+<span class="sd">    :param text: Text number</span>
+<span class="sd">    :param page: Page number</span>
+<span class="sd">    :type manuscr: int</span>
+<span class="sd">    :type text: int</span>
+<span class="sd">    :type page: int</span>
+
+<span class="sd">    :returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;manuscripts&#39;</span><span class="p">][</span><span class="n">manuscr</span><span class="p">][</span><span class="s1">&#39;texts&#39;</span><span class="p">][</span><span class="n">text</span><span class="p">]</span>
+                             <span class="p">[</span><span class="s1">&#39;pages&#39;</span><span class="p">][</span><span class="n">page</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;diagrams&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="level3"><a class="viewcode-back" href="../general.html#medDiaJson.level3">[docs]</a><span class="k">def</span> <span class="nf">level3</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span><span class="n">text</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span><span class="n">diagram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalization on diagram level.</span>
+<span class="sd">    Axis &#39;diaAttr&#39; is dropped.</span>
+
+<span class="sd">    :param manuscr: Manuscript number</span>
+<span class="sd">    :param text: Text number</span>
+<span class="sd">    :param page: Page number</span>
+<span class="sd">    :param diagram: Diagram number</span>
+<span class="sd">    :type manuscr: int</span>
+<span class="sd">    :type text: int</span>
+<span class="sd">    :type page: int</span>
+<span class="sd">    :type diagram: int</span>
+
+<span class="sd">    :returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;manuscripts&#39;</span><span class="p">][</span><span class="n">manuscr</span><span class="p">][</span><span class="s1">&#39;texts&#39;</span><span class="p">][</span><span class="n">text</span><span class="p">]</span>\
+        <span class="p">[</span><span class="s1">&#39;pages&#39;</span><span class="p">][</span><span class="n">page</span><span class="p">][</span><span class="s1">&#39;diagrams&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;diaAttr&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">diagram</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="level4"><a class="viewcode-back" href="../general.html#medDiaJson.level4">[docs]</a><span class="k">def</span> <span class="nf">level4</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">diagram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalization on diagram attributes level.</span>
+
+<span class="sd">    :param manuscr: Manuscript number</span>
+<span class="sd">    :param text: Text number</span>
+<span class="sd">    :param page: Page number</span>
+<span class="sd">    :param diagram: Diagram number</span>
+<span class="sd">    :type manuscr: int</span>
+<span class="sd">    :type text: int</span>
+<span class="sd">    :type page: int</span>
+<span class="sd">    :type diagram: int</span>
+
+<span class="sd">    :returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;manuscripts&#39;</span><span class="p">][</span><span class="n">manuscr</span><span class="p">][</span><span class="s1">&#39;texts&#39;</span><span class="p">][</span><span class="n">text</span><span class="p">]</span>\
+        <span class="p">[</span><span class="s1">&#39;pages&#39;</span><span class="p">][</span><span class="n">page</span><span class="p">][</span><span class="s1">&#39;diagrams&#39;</span><span class="p">][</span><span class="n">diagram</span><span class="p">][</span><span class="s1">&#39;diaAttr&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="diagCon"><a class="viewcode-back" href="../general.html#medDiaJson.diagCon">[docs]</a><span class="k">def</span> <span class="nf">diagCon</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">diagram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Construct dataframe with all information contained</span>
+<span class="sd">    in the JSON file for one specific diagram.</span>
+
+<span class="sd">    :param manuscr: Manuscript number</span>
+<span class="sd">    :param text: Text number</span>
+<span class="sd">    :param page: Page number</span>
+<span class="sd">    :param diagram: Diagram number</span>
+<span class="sd">    :type manuscr: int</span>
+<span class="sd">    :type text: int</span>
+<span class="sd">    :type page: int</span>
+<span class="sd">    :type diagram: int</span>
+
+<span class="sd">    :returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">level0</span><span class="p">(</span><span class="n">manuscr</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">level1</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span><span class="n">text</span><span class="p">)</span><span class="o">.</span>\
+                               <span class="n">join</span><span class="p">(</span><span class="n">level2</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">page</span><span class="p">)</span><span class="o">.</span>\
+                                    <span class="n">join</span><span class="p">(</span><span class="n">level3</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">page</span><span class="p">,</span><span class="n">diagram</span><span class="p">)</span><span class="o">.</span>\
+                                         <span class="n">join</span><span class="p">(</span><span class="n">level4</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">page</span><span class="p">,</span><span class="n">diagram</span><span class="p">)))))</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+<span class="c1">#########################################</span>
+<span class="c1"># Determining length of different lists #</span>
+<span class="c1">#########################################</span>
+<div class="viewcode-block" id="rangeMan"><a class="viewcode-back" href="../general.html#medDiaJson.rangeMan">[docs]</a><span class="k">def</span> <span class="nf">rangeMan</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Range of manuscript list.</span>
+
+<span class="sd">    Uses full json file, therefore no parameter.</span>
+
+<span class="sd">    :returns: range</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;manuscripts&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="rangeTexts"><a class="viewcode-back" href="../general.html#medDiaJson.rangeTexts">[docs]</a><span class="k">def</span> <span class="nf">rangeTexts</span><span class="p">(</span><span class="n">manuscr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Range of text list.</span>
+
+<span class="sd">    :param manuscr: Manuscript index</span>
+<span class="sd">    :type manuscr: int</span>
+<span class="sd">    :returns: range</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;manuscripts&#39;</span><span class="p">][</span><span class="n">manuscr</span><span class="p">][</span><span class="s1">&#39;texts&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="rangePages"><a class="viewcode-back" href="../general.html#medDiaJson.rangePages">[docs]</a><span class="k">def</span> <span class="nf">rangePages</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Range of pages list.</span>
+
+<span class="sd">    :param manuscr: Manuscript index</span>
+<span class="sd">    :type manuscr: int</span>
+<span class="sd">    :param text: Text number</span>
+<span class="sd">    :type tex: int</span>
+<span class="sd">    :returns: range</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;manuscripts&#39;</span><span class="p">][</span><span class="n">manuscr</span><span class="p">][</span><span class="s1">&#39;texts&#39;</span><span class="p">][</span><span class="n">text</span><span class="p">][</span><span class="s1">&#39;pages&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="rangeDiag"><a class="viewcode-back" href="../general.html#medDiaJson.rangeDiag">[docs]</a><span class="k">def</span> <span class="nf">rangeDiag</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">page</span> <span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;&quot;Range of diagram list.</span>
+
+<span class="sd">    :param manuscr: Manuscript index</span>
+<span class="sd">    :type manuscr: int</span>
+<span class="sd">    :param text: Text number</span>
+<span class="sd">    :type tex: int</span>
+<span class="sd">    :param page: Page number</span>
+<span class="sd">    :type page: int</span>
+<span class="sd">    :returns: range</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;manuscripts&#39;</span><span class="p">][</span><span class="n">manuscr</span><span class="p">][</span><span class="s1">&#39;texts&#39;</span><span class="p">][</span><span class="n">text</span><span class="p">][</span><span class="s1">&#39;pages&#39;</span><span class="p">][</span><span class="n">page</span><span class="p">][</span><span class="s1">&#39;diagrams&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div>
+
+<span class="c1">##################################################</span>
+<span class="c1"># Constructing dataframe for one manuscript index#</span>
+<span class="c1">##################################################</span>
+<div class="viewcode-block" id="biblioCon"><a class="viewcode-back" href="../general.html#medDiaJson.biblioCon">[docs]</a><span class="k">def</span> <span class="nf">biblioCon</span><span class="p">(</span><span class="n">manuscr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs the full dataframe for one manuscript index.</span>
+
+<span class="sd">    :param manuscr: Manuscript number</span>
+<span class="sd">    :type manuscr: int</span>
+<span class="sd">    :returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tempList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">rangeTexts</span><span class="p">(</span><span class="n">manuscr</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">rangePages</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">rangeDiag</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+                <span class="n">tempList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diagCon</span><span class="p">(</span><span class="n">manuscr</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">d</span><span class="p">))</span>
+    <span class="n">tempRes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">tempList</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tempRes</span></div>
+
+<span class="c1">######################</span>
+<span class="c1">#Construct dataframe #</span>
+<span class="c1">######################</span>
+
+<span class="c1"># Careful!, takes time and can use quite a lot of memory</span>
+<div class="viewcode-block" id="medDiaCon"><a class="viewcode-back" href="../general.html#medDiaJson.medDiaCon">[docs]</a><span class="k">def</span> <span class="nf">medDiaCon</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs a dataframe for the first k entries in the manuscript index.</span>
+
+<span class="sd">    :warning:</span>
+
+<span class="sd">        Takes some time to build full dataframe (x=236),</span>
+<span class="sd">        memory usage is high, too.</span>
+
+<span class="sd">    :param x: Number of manuscripts to include.</span>
+<span class="sd">    :type x: int</span>
+<span class="sd">    :returns: Dataframe</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="n">tempList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">tempList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">biblioCon</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">tempList</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+<span class="c1">#######################</span>
+<span class="c1"># Helper functions    #</span>
+<span class="c1">#######################</span>
+
+<div class="viewcode-block" id="uniqueValues"><a class="viewcode-back" href="../general.html#medDiaJson.uniqueValues">[docs]</a><span class="k">def</span> <span class="nf">uniqueValues</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;author&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the unique dataframe values for a given column name.</span>
+
+<span class="sd">    :param dataframe: dataframe</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+<span class="sd">    :param key: Column key (default = &#39;author&#39;)</span>
+<span class="sd">    :type key: string</span>
+<span class="sd">    :returns: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dfType</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">dfType</span> <span class="o">==</span> <span class="s1">&#39;DataFrame&#39;</span><span class="p">,</span> <span class="s1">&#39;Please provide dataframe. Provided data is of type: </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">dfType</span>
+
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+        <span class="c1">#print(&#39;For the key: &quot;&#39; + key + &#39;&quot; the following unique values exist:&#39;)</span>
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; is not a valid key for the given dataframe.&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="authorKey"><a class="viewcode-back" href="../general.html#medDiaJson.authorKey">[docs]</a><span class="k">def</span> <span class="nf">authorKey</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get all different values for one key for a given author.</span>
+
+<span class="sd">    :param dataframe: DataFrame</span>
+<span class="sd">    :param author: Name of author</span>
+<span class="sd">    :param key: Column name</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+<span class="sd">    :type author: string</span>
+<span class="sd">    :type key: string</span>
+<span class="sd">    :returns: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dfType</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">dfType</span> <span class="o">==</span> <span class="s1">&#39;DataFrame&#39;</span><span class="p">,</span> <span class="s1">&#39;Please provide dataframe. Provided data is of type: </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">dfType</span>
+
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">author</span><span class="p">][</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+        <span class="c1">#print(author + &#39; has for the key &quot;&#39; + key + &#39;&quot; the following different entries:\n&#39;)</span>
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; is not a valid key.&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="diagYearAuthor"><a class="viewcode-back" href="../general.html#medDiaJson.diagYearAuthor">[docs]</a><span class="k">def</span> <span class="nf">diagYearAuthor</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">author</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns dataframe with unique diagram IDs and corresponding years</span>
+<span class="sd">    for given author.</span>
+
+<span class="sd">    :param dataframe: DataFrame</span>
+<span class="sd">    :param author: name of author</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+<span class="sd">    :type author: string</span>
+
+<span class="sd">    :returns: DataFrame</span>
+
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; diagYearAuthor(df,&#39;Plinius&#39;)</span>
+<span class="sd">            DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dfType</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">dfType</span> <span class="o">==</span> <span class="s1">&#39;DataFrame&#39;</span><span class="p">,</span> <span class="s1">&#39;Please provide dataframe. Provided data is of type: </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">dfType</span>
+
+    <span class="n">resdiaID</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">author</span><span class="p">][</span><span class="s1">&#39;diaID&#39;</span><span class="p">]</span>
+    <span class="n">resdate</span><span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">author</span><span class="p">][</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+    <span class="n">resUnique</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">resdiaID</span><span class="p">,</span><span class="n">resdate</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="s1">&#39;diaID&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">resUnique</span></div>
+
+
+<div class="viewcode-block" id="diaID2Type"><a class="viewcode-back" href="../general.html#medDiaJson.diaID2Type">[docs]</a><span class="k">def</span> <span class="nf">diaID2Type</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">diaID</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gives the diagram typ for a given diagram ID.</span>
+
+<span class="sd">    :param dataframe: dataframe</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+<span class="sd">    :param diaID: Diagram ID</span>
+<span class="sd">    :type diaID: string</span>
+
+<span class="sd">    :returns: float</span>
+
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; diaID2Type(df,&#39;MAPD0249&#39;)</span>
+<span class="sd">            15.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dfType</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">dfType</span> <span class="o">==</span> <span class="s1">&#39;DataFrame&#39;</span><span class="p">,</span> <span class="s1">&#39;Please provide dataframe. Provided data is of type: </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">dfType</span>
+
+    <span class="n">resTemp</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;diaID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">diaID</span><span class="p">][</span><span class="s1">&#39;diaTyp&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">resTemp</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; DiaID not found.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">resTemp</span><span class="p">[</span><span class="n">resTemp</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="diaTypeDescr"><a class="viewcode-back" href="../general.html#medDiaJson.diaTypeDescr">[docs]</a><span class="k">def</span> <span class="nf">diaTypeDescr</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span><span class="n">diaType</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns name and description of diagram typ.</span>
+
+<span class="sd">    :param dataframe: dataframe</span>
+<span class="sd">    :param diaTyp: diagram typ</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+<span class="sd">    :type diaTyp: float</span>
+<span class="sd">    :returns: text</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">head</span> <span class="o">=</span> <span class="n">dfInstances</span><span class="p">[</span><span class="n">dfInstances</span><span class="p">[</span><span class="s1">&#39;diaTyp&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">diaType</span><span class="p">][</span><span class="s1">&#39;diaName&#39;</span><span class="p">][</span><span class="n">diaType</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">dfInstances</span><span class="p">[</span><span class="n">dfInstances</span><span class="p">[</span><span class="s1">&#39;diaTyp&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">diaType</span><span class="p">][</span><span class="s1">&#39;diaDescription&#39;</span><span class="p">][</span><span class="n">diaType</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">head</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">body</span><span class="p">)</span></div>
+
+
+<span class="c1"># get new dataframe object for given list of key, value pairs, reseting the original index</span>
+<span class="c1"># Depending on key, value can be string, float or int</span>
+<div class="viewcode-block" id="reducedData"><a class="viewcode-back" href="../general.html#medDiaJson.reducedData">[docs]</a><span class="k">def</span> <span class="nf">reducedData</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">keyValueList</span><span class="p">,</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Construct reduced dataframe for (key, value) pair.</span>
+<span class="sd">    If value is of type string, partial strings are also matched.</span>
+<span class="sd">    Columns are only dropped from dataframe, if all values are NaN.</span>
+<span class="sd">    If debug=True: asserts whether values have correct type() for given key.</span>
+<span class="sd">    Returns empty dataframe, if no dataset fulfills all conditions.</span>
+
+<span class="sd">    :param dataframe: Name of dataframe for reduction.</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+<span class="sd">    :param override: Override key-value-dtype assertion, default: False</span>
+<span class="sd">    :type override: bool</span>
+<span class="sd">    :param keyValueList: List of (key,value) pairs to consider</span>
+<span class="sd">    :type keyValueList: list of lists, e.g. [[&#39;a&#39;,&#39;b&#39;],[&#39;c&#39;,&#39;d&#39;]]</span>
+<span class="sd">    :returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dfType</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">dfType</span> <span class="o">==</span> <span class="s1">&#39;DataFrame&#39;</span><span class="p">,</span> <span class="s1">&#39;Please provide dataframe. Provided data is of type: </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">dfType</span>
+
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+        <span class="n">typKeyList</span> <span class="o">=</span> <span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">keyValueList</span><span class="p">]]</span>
+        <span class="n">typValueList</span> <span class="o">=</span> <span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">keyValueList</span><span class="p">]]</span>
+        <span class="k">assert</span> <span class="n">typKeyList</span> <span class="o">==</span> <span class="n">typValueList</span><span class="p">,</span> <span class="s1">&#39;Possible failure in dtype:</span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">typKeyList</span><span class="p">,</span><span class="n">typValueList</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">condList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># Old search for full strings</span>
+    <span class="c1"># for x in keyValueList:</span>
+    <span class="c1">#     if isinstance(x[1],str):</span>
+    <span class="c1">#         resTemp = &#39;(dataframe[&quot;&#39; + x[0] + &#39;&quot;] == &quot;&#39; + x[1] + &#39;&quot;)&#39;</span>
+    <span class="c1">#         condList.append(resTemp)</span>
+    <span class="c1">#     else:</span>
+    <span class="c1">#         resTemp = &#39;(dataframe[&quot;&#39; + x[0] + &#39;&quot;] == &#39; + str(x[1]) + &#39;)&#39;</span>
+    <span class="c1">#         condList.append(resTemp)</span>
+    <span class="c1">#     result = dataframe.loc[eval(&#39;&amp; &#39;.join(condList))]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">keyValueList</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nb">str</span><span class="p">):</span>
+            <span class="n">resTemp</span> <span class="o">=</span> <span class="s1">&#39;(dataframe[&quot;&#39;</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;&quot;].str.contains(&quot;&#39;</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;&quot;)==True)&#39;</span>
+            <span class="n">condList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resTemp</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resTemp</span> <span class="o">=</span> <span class="s1">&#39;(dataframe[&quot;&#39;</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;&quot;] == &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+            <span class="n">condList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resTemp</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;&amp; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">condList</span><span class="p">))]</span>
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Conditions can not be fulfilled. DataFrame empty.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">keyValueList</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="diaAttrPlot"><a class="viewcode-back" href="../general.html#medDiaJson.diaAttrPlot">[docs]</a><span class="k">def</span> <span class="nf">diaAttrPlot</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">diaTyp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Prepares diagram attributes for plotting as bar plot grouped by date.</span>
+
+<span class="sd">    :param dataframe: DataFrame</span>
+<span class="sd">    :param author: Name of author</span>
+<span class="sd">    :param diaTyp: Diagram typ</span>
+<span class="sd">    :type dataframe: pandas.DataFrame</span>
+<span class="sd">    :type author: string</span>
+<span class="sd">    :type diaTyp: float</span>
+<span class="sd">    :returns: DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">resList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">authorKey</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span><span class="n">author</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">):</span>
+        <span class="n">dftemp</span> <span class="o">=</span> <span class="n">reducedData</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,[[</span><span class="s1">&#39;author&#39;</span><span class="p">,</span><span class="n">author</span><span class="p">],[</span><span class="s1">&#39;diaTyp&#39;</span><span class="p">,</span><span class="n">diaTyp</span><span class="p">],[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="n">date</span><span class="p">)]])</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+        <span class="c1"># List column names</span>
+        <span class="n">colList</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">dftemp</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="c1"># Regex search string for attributes of diaTyp = diaTyp</span>
+        <span class="n">regexstr</span> <span class="o">=</span> <span class="s2">&quot;^(?!M&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">diaTyp</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;|\.).*&quot;</span>
+        <span class="n">regex</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">regexstr</span><span class="p">)</span>
+        <span class="c1"># List all column names that do not fit and drop them.</span>
+        <span class="n">listAttr</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">colList</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="n">regex</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">l</span><span class="p">)]</span> <span class="k">if</span> <span class="n">m</span><span class="p">]</span>
+        <span class="n">dftemp2</span> <span class="o">=</span> <span class="n">dftemp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">listAttr</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Data cleaning for unknown attributes</span>
+        <span class="k">if</span> <span class="s1">&#39;?&#39;</span> <span class="ow">in</span> <span class="n">dftemp2</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">dftemp2</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;?&#39;</span><span class="p">],[</span><span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;attribute&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">dftemp2</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;attribute&#39;</span><span class="p">)</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="n">resList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">resList</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="related bottom">
+  <nav id="rellinks">
+    <ul>
+    </ul>
+  </nav>
+  <nav id="breadcrumbs">
+    <ul>
+      <li><a href="../index.html">Computational Humanities -- Topoi 0.5 documentation</a></li>
+      <li>
+        <a href="index.html">Module code</a>
+      </li> 
+    </ul>
+  </nav>
+  </div>
+  <footer id="pagefooter">&copy; 2016, Gerd Grasshoff, Malte Vogl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a>
+      1.5a0
+        with the <a href="http://github.com/irskep/sphinx-better-theme">
+          better</a> theme.
+
+  </footer>
+
+  
+  </body>
+</html>

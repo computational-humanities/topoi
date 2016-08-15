@@ -1,0 +1,648 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Projekte Overview &mdash; Computational Humanities -- Topoi 0.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/better.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Computational Humanities -- Topoi 0.5 documentation" href="index.html" />
+    <link rel="next" title="Notebooks" href="notebook.html" />
+    <link rel="prev" title="Tutorials" href="tutorials.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
+  <body role="document">
+    <header id="pageheader"><h1><a href="index.html ">
+        Computational Humanities -- Topoi 0.5 documentation
+    </a></h1></header>
+  <div class="related top">
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="tutorials.html" title="Previous document">Tutorials</a>
+        </li>
+        <li>
+          <a href="notebook.html" title="Next document">Notebooks</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+  <nav id="breadcrumbs">
+    <ul>
+      <li><a href="index.html">Computational Humanities -- Topoi 0.5 documentation</a></li> 
+    </ul>
+  </nav>
+  </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="projekte-overview">
+<h1>Projekte Overview<a class="headerlink" href="#projekte-overview" title="Permalink to this headline">¶</a></h1>
+<p>Projects are divided in subfolders. Each project folder contains /data for original data, and /program for usable versions of programs.</p>
+<div class="section" id="geography-omega">
+<h2>Geography Omega<a class="headerlink" href="#geography-omega" title="Permalink to this headline">¶</a></h2>
+<p>Analysis of historical coordinates originating in Ptolemy&#8217;s Geography.</p>
+</div>
+<div class="section" id="medieval-diagrams">
+<h2>Medieval Diagrams<a class="headerlink" href="#medieval-diagrams" title="Permalink to this headline">¶</a></h2>
+<p>Analysis of medieval diagram drawings. Focus is on several typical attributes and their change in time.</p>
+<p>To load the modules into a Jupyter notebook use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">modulename</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">modulename</span> <span class="k">import</span> <span class="n">function</span>
+</pre></div>
+</div>
+<div class="section" id="module-roman_date">
+<span id="available-helper-functions"></span><h3>Available helper functions<a class="headerlink" href="#module-roman_date" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="roman_date.from_roman">
+<code class="descclassname">roman_date.</code><code class="descname">from_roman</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/roman_date.html#from_roman"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#roman_date.from_roman" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts roman numerals to integer representation</p>
+<p>from <a class="reference external" href="http://www.diveintopython3.net/regular-expressions.html">http://www.diveintopython3.net/regular-expressions.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; Roman numeral</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="module-medDiaJson"></span><dl class="function">
+<dt id="medDiaJson.altId2image">
+<code class="descclassname">medDiaJson.</code><code class="descname">altId2image</code><span class="sig-paren">(</span><em>dataframe</em>, <em>diaID</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#altId2image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.altId2image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens browsertab with link to picture of diagram one level higher</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>diaID</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; diagram ID</li>
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; dataframe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">webpage</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.authorKey">
+<code class="descclassname">medDiaJson.</code><code class="descname">authorKey</code><span class="sig-paren">(</span><em>dataframe</em>, <em>author</em>, <em>key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#authorKey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.authorKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all different values for one key for a given author.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; DataFrame</li>
+<li><strong>author</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; Name of author</li>
+<li><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; Column name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.biblioCon">
+<code class="descclassname">medDiaJson.</code><code class="descname">biblioCon</code><span class="sig-paren">(</span><em>manuscr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#biblioCon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.biblioCon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs the full dataframe for one manuscript index.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript number</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.diaAttrPlot">
+<code class="descclassname">medDiaJson.</code><code class="descname">diaAttrPlot</code><span class="sig-paren">(</span><em>dataframe</em>, <em>author</em>, <em>diaTyp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#diaAttrPlot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.diaAttrPlot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares diagram attributes for plotting as bar plot grouped by date.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; DataFrame</li>
+<li><strong>author</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; Name of author</li>
+<li><strong>diaTyp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.5)"><em>float</em></a>) &#8211; Diagram typ</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.diaID2Type">
+<code class="descclassname">medDiaJson.</code><code class="descname">diaID2Type</code><span class="sig-paren">(</span><em>dataframe</em>, <em>diaID</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#diaID2Type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.diaID2Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the diagram typ for a given diagram ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; dataframe</li>
+<li><strong>diaID</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; Diagram ID</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">float</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">diaID2Type</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;MAPD0249&#39;</span><span class="p">)</span>
+<span class="go">    15.0</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.diaTypeDescr">
+<code class="descclassname">medDiaJson.</code><code class="descname">diaTypeDescr</code><span class="sig-paren">(</span><em>dataframe</em>, <em>diaType</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#diaTypeDescr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.diaTypeDescr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns name and description of diagram typ.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; dataframe</li>
+<li><strong>diaTyp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.5)"><em>float</em></a>) &#8211; diagram typ</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">text</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.diagCon">
+<code class="descclassname">medDiaJson.</code><code class="descname">diagCon</code><span class="sig-paren">(</span><em>manuscr</em>, <em>text</em>, <em>page</em>, <em>diagram</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#diagCon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.diagCon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct dataframe with all information contained
+in the JSON file for one specific diagram.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript number</li>
+<li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Text number</li>
+<li><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Page number</li>
+<li><strong>diagram</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Diagram number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.diagYearAuthor">
+<code class="descclassname">medDiaJson.</code><code class="descname">diagYearAuthor</code><span class="sig-paren">(</span><em>dataframe</em>, <em>author</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#diagYearAuthor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.diagYearAuthor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns dataframe with unique diagram IDs and corresponding years
+for given author.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; DataFrame</li>
+<li><strong>author</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; name of author</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DataFrame</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">diagYearAuthor</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;Plinius&#39;</span><span class="p">)</span>
+<span class="go">    DataFrame</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.id2image">
+<code class="descclassname">medDiaJson.</code><code class="descname">id2image</code><span class="sig-paren">(</span><em>dataframe</em>, <em>diaID</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#id2image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.id2image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens link to picture of diagram type inline.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>diaID</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; diagram ID</li>
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; dataframe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">webpage</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.level0">
+<code class="descclassname">medDiaJson.</code><code class="descname">level0</code><span class="sig-paren">(</span><em>manuscr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#level0"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.level0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalization on manuscript level.
+Axis &#8216;texts&#8217; is dropped.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript number</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.level1">
+<code class="descclassname">medDiaJson.</code><code class="descname">level1</code><span class="sig-paren">(</span><em>manuscr</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#level1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.level1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalization on text level.
+Axis &#8216;pages&#8217; is dropped.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript number</li>
+<li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Text number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.level2">
+<code class="descclassname">medDiaJson.</code><code class="descname">level2</code><span class="sig-paren">(</span><em>manuscr</em>, <em>text</em>, <em>page</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#level2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.level2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalization on pages level.
+Axis &#8216;diagrams&#8217; is dropped.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript number</li>
+<li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Text number</li>
+<li><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Page number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.level3">
+<code class="descclassname">medDiaJson.</code><code class="descname">level3</code><span class="sig-paren">(</span><em>manuscr</em>, <em>text</em>, <em>page</em>, <em>diagram</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#level3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.level3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalization on diagram level.
+Axis &#8216;diaAttr&#8217; is dropped.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript number</li>
+<li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Text number</li>
+<li><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Page number</li>
+<li><strong>diagram</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Diagram number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.level4">
+<code class="descclassname">medDiaJson.</code><code class="descname">level4</code><span class="sig-paren">(</span><em>manuscr</em>, <em>text</em>, <em>page</em>, <em>diagram</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#level4"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.level4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalization on diagram attributes level.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript number</li>
+<li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Text number</li>
+<li><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Page number</li>
+<li><strong>diagram</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Diagram number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.manID2image">
+<code class="descclassname">medDiaJson.</code><code class="descname">manID2image</code><span class="sig-paren">(</span><em>dataframe</em>, <em>manID</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#manID2image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.manID2image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens browsertab with link to startpage of manuscript</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>diaID</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; manuscript ID</li>
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; dataframe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">webpage</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.medDiaCon">
+<code class="descclassname">medDiaJson.</code><code class="descname">medDiaCon</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#medDiaCon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.medDiaCon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a dataframe for the first k entries in the manuscript index.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Warning:</th><td class="field-body">Takes some time to build full dataframe (x=236),
+memory usage is high, too.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Number of manuscripts to include.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dataframe</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.rangeDiag">
+<code class="descclassname">medDiaJson.</code><code class="descname">rangeDiag</code><span class="sig-paren">(</span><em>manuscr</em>, <em>text</em>, <em>page</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#rangeDiag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.rangeDiag" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8220;Range of diagram list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript index</li>
+<li><strong>text</strong> &#8211; Text number</li>
+<li><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Page number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">range</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.rangeMan">
+<code class="descclassname">medDiaJson.</code><code class="descname">rangeMan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#rangeMan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.rangeMan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Range of manuscript list.</p>
+<p>Uses full json file, therefore no parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">range</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.rangePages">
+<code class="descclassname">medDiaJson.</code><code class="descname">rangePages</code><span class="sig-paren">(</span><em>manuscr</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#rangePages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.rangePages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Range of pages list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript index</li>
+<li><strong>text</strong> &#8211; Text number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">range</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.rangeTexts">
+<code class="descclassname">medDiaJson.</code><code class="descname">rangeTexts</code><span class="sig-paren">(</span><em>manuscr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#rangeTexts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.rangeTexts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Range of text list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>manuscr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.5)"><em>int</em></a>) &#8211; Manuscript index</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">range</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.reducedData">
+<code class="descclassname">medDiaJson.</code><code class="descname">reducedData</code><span class="sig-paren">(</span><em>dataframe</em>, <em>keyValueList</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#reducedData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.reducedData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct reduced dataframe for (key, value) pair.
+If value is of type string, partial strings are also matched.
+Columns are only dropped from dataframe, if all values are NaN.
+If debug=True: asserts whether values have correct type() for given key.
+Returns empty dataframe, if no dataset fulfills all conditions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; Name of dataframe for reduction.</li>
+<li><strong>override</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.5)"><em>bool</em></a>) &#8211; Override key-value-dtype assertion, default: False</li>
+<li><strong>keyValueList</strong> (<em>list of lists</em><em>, </em><em>e.g.</em><em> [</em><em></em><em>[</em><em>'a'</em><em>,</em><em>'b'</em><em>]</em><em></em><em>,</em><em></em><em>[</em><em>'c'</em><em>,</em><em>'d'</em><em>]</em><em></em><em>]</em><em></em>) &#8211; List of (key,value) pairs to consider</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="medDiaJson.uniqueValues">
+<code class="descclassname">medDiaJson.</code><code class="descname">uniqueValues</code><span class="sig-paren">(</span><em>dataframe</em>, <em>key='author'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/medDiaJson.html#uniqueValues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#medDiaJson.uniqueValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the unique dataframe values for a given column name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.18.1)"><em>pandas.DataFrame</em></a>) &#8211; dataframe</li>
+<li><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.5)"><em>string</em></a>) &#8211; Column key (default = &#8216;author&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Projekte Overview</a><ul>
+<li><a class="reference internal" href="#geography-omega">Geography Omega</a></li>
+<li><a class="reference internal" href="#medieval-diagrams">Medieval Diagrams</a><ul>
+<li><a class="reference internal" href="#module-roman_date">Available helper functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorials.html"
+                        title="previous chapter">Tutorials</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="notebook.html"
+                        title="next chapter">Notebooks</a></p>
+<div class="sourcelink">
+  <a href="_sources/general.rst.txt" rel="nofollow">
+    Show page source
+  </a>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="related bottom">
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="tutorials.html" title="Previous document">Tutorials</a>
+        </li>
+        <li>
+          <a href="notebook.html" title="Next document">Notebooks</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+  <nav id="breadcrumbs">
+    <ul>
+      <li><a href="index.html">Computational Humanities -- Topoi 0.5 documentation</a></li> 
+    </ul>
+  </nav>
+  </div>
+  <footer id="pagefooter">&copy; 2016, Gerd Grasshoff, Malte Vogl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a>
+      1.5a0
+        with the <a href="http://github.com/irskep/sphinx-better-theme">
+          better</a> theme.
+
+  </footer>
+
+  
+  </body>
+</html>

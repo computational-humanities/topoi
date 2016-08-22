@@ -1,5 +1,3 @@
-# Docstrings are accessed by adding a question mark e.g. uniqueValues?
-
 #################
 # Preliminaries #
 #################
@@ -10,6 +8,11 @@ import json
 import numpy as np
 import pandas as pd
 from pandas.io.json import json_normalize
+import webbrowser
+from IPython.display import HTML
+from bs4 import BeautifulSoup
+import requests
+
 
 # To always find data, relative paths are made absolute.
 # Since the structure of projects is Project/data Project/program(testing)
@@ -29,8 +32,7 @@ dfInstances = pd.DataFrame(data['instances']['diaTyp'])
 #####################################
 #Open image for diagramID in new tab#
 #####################################
-import webbrowser
-from IPython.display import HTML
+
 
 def id2image(dataframe, diaID):
     """
@@ -45,22 +47,60 @@ def id2image(dataframe, diaID):
     """
     url_start = 'http://repository.edition-topoi.org/digilib/digilib.html?fn=/MAPD/ReposMAPD/EastwoodCollection/'
     url_end = dataframe[dataframe['diaID']==diaID].reset_index(drop=True)['diaURL'][0]
+    #print(url_start + url_end)
     return HTML('<iframe src=' + url_start + url_end + ' + width=100% height=460></iframe>')
 
-# def type2image(dataframe, diaType):
-#     """
-#     Opens link to picture of diagram inline.
-#
-#     :param diaType: diagram type
-#     :type diaType: string
-#     :param dataframe: dataframe
-#     :type dataframe: pandas.DataFrame
-#
-#     :returns: inline webpage
-#     """
-#     url_start = 'http://repository.edition-topoi.org/digilib/digilib.html?fn=/MAPD/ReposMAPD/EastwoodCollection/'
-#     url_end = dfInstances[dfInstances['diaTyp']==1.0]['diagramURL'][0]
-#     return HTML('<iframe src=' + url_start + url_end + ' + width=100% height=460></iframe>')
+def textId2imagegrid(dataframe, author, textID):
+    """
+    Opens all pictures for given author and textID as a grid.
+
+    :param author: Name of Author
+    :type author: string
+    :param textID: text ID
+    :type textID: string
+    :param dataframe: dataframe
+    :type dataframe: pandas.DataFrame
+
+    :returns: inline html table
+    """
+    #url_list = []
+    imageList = []
+    listRows = []
+    listIDRows = []
+
+    url_start = 'http://repository.edition-topoi.org/MAPD/ReposMAPD/'
+
+    reddf = reducedData(dataframe,[['author',author],['textID',textID]])
+
+    for diaID in reddf.diaID:
+        url = url_start + diaID
+        r  = requests.get(url)
+        data = r.text
+        soup = BeautifulSoup(data,'lxml')
+        res = re.findall('([-\w]+\.(?:jpg))', str(soup))
+        if res:
+            imageList.append(url + '/' + res[0])
+
+    listImgSrc = ['<td><img src={0} + width=100%/></td>'.format(x) for x in imageList]
+    listTableData = [listImgSrc[x:x+3] for x in range(0,len(listImgSrc),3)]
+
+    for x in listTableData:
+        res = '<tr>' + ''.join(x) + '</tr>'
+        listRows.append(res)
+
+    url_start2 = 'http://repository.edition-topoi.org/digilib/digilib.html?fn=/MAPD/ReposMAPD/EastwoodCollection/'
+    idList = ['<td><a target="_blank" href={0}>{1}</a>{2}</td>'.format(url_start2 + reddf['diaURL'].loc[x],reddf['diaID'].loc[x],', Dia. type: ' + str(reddf['diaTyp'].loc[x])) for x in range(len(reddf.diaID))]
+    idListData = [idList[x:x+3] for x in range(0,len(idList),3)]
+
+    for x in idListData:
+        res = '<tr>' + ''.join(x) + '</tr>'
+        listIDRows.append(res)
+
+    fullData = [x + y for x,y in zip(listRows,listIDRows)]
+
+    htmlcode = '<table style="width:100%"><tr><th>Diagrams in text {0} from author {1} in manuscript {2} </th><th></th><th></th></tr>'.format(textID,author,reddf['manID'].loc[0]) + ''.join(fullData) + '</table>'
+
+    return HTML(htmlcode)
 
 def altId2image(dataframe, diaID):
     """
@@ -477,6 +517,8 @@ def reducedData(dataframe, keyValueList,debug=False):
     #     result = dataframe.loc[eval('& '.join(condList))]
     for x in keyValueList:
         if isinstance(x[1],str):
+            if '('  in x[1] or ')' in x[1]:
+                x[1] = x[1].replace('(','\(').replace(')','\)')
             resTemp = '(dataframe["' + x[0] + '"].str.contains("' + x[1] + '")==True)'
             condList.append(resTemp)
         else:
@@ -485,7 +527,7 @@ def reducedData(dataframe, keyValueList,debug=False):
         result = dataframe.loc[eval('& '.join(condList))]
     if debug:
         if 0 in result.shape:
-            print('Conditions can not be fulfilled. DataFrame empty.\n',keyValueList)
+            print('Conditions can not be fulfilled. DataFrame empty.\n',keyValueList, ' & '.join(condList))
     return result.reset_index(drop=True).dropna(axis=1,how='all')
 
 

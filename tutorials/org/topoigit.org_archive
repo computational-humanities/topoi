@@ -1,0 +1,66 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/malte/org/topoigit.org
+
+
+* The workflow of collaborating
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-08-25 Do 10:26
+  :ARCHIVE_FILE: ~/org/topoigit.org
+  :ARCHIVE_OLPATH: Introduction
+  :ARCHIVE_CATEGORY: topoigit
+  :END:
+
+After changing to the working folder, first check if you are in the correct branch
+#+BEGIN_SRC bash
+ git branch
+#+END_SRC
+
+If that is not the case, change to it by
+#+BEGIN_SRC bash
+    git checkout name_of_branch
+#+END_SRC
+
+There might be errors due to unsaved changes of files in the master branch.
+
+On the development branch, you ca work as usual, e.g. add a test file to a new folder. 
+
+Running 
+#+BEGIN_SRC bash 
+  git status
+#+END_SRC
+
+should show the changed, deleted, or new file colored in red. This indicates, that the file is not 
+yet in the staging area, an intermediate state of files to be send to the online version of the branch.
+
+To make the changes part of this staging area, use
+#+BEGIN_SRC 
+ git add filename1 filename2 ...
+#+END_SRC
+to add all changes that should be published. 
+
+To bring the changes to the online version of the branch use first
+#+BEGIN_SRC 
+ git commit -m 'useful commit message describing the changes'
+#+END_SRC
+
+The changes are now logged for being ready to move to the online repository. However, they are
+not yet there! 
+
+You could continue working, adding changes to bundle a new commit. To finally send them online, run
+#+BEGIN_SRC 
+    git push origin name_of_branch
+#+END_SRC
+This will send the bundled changes, called commits, to the online version of your working branch.
+
+
+
+
+
+
+
+
+
+
+

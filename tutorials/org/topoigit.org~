@@ -1,0 +1,284 @@
+#+TITLE: Computational Humanities and History of Science
+#+AUTHOR: Malte Vogl
+#+EMAIL: mvogl@mpiwg-berlin.mpg.de
+#+Date: August/2016
+#+OPTIONS: ^:{}
+#+STARTUP: logdone
+#+LANGUAGE: en
+#+SETUPFILE: theme-bigblow.setup
+
+* Introduction
+
+This document describes the workflow for contributing to the [[http://github.com/computational-humanities/topoi][Computational Humanities]] 
+project on Github. Essential tools are introduced and available helper functions explained. 
+
+** Requiered software
+
+To be able to collaborate, several software packages are necessary. Depending on
+the operating system, installation procedure can be different. Therefore, only package names 
+are mentioned not the actual installation process. 
+
++ Git :: The basic git software for terminal operations. Aditionally, several GUI programs exist for all platforms.
++ Python :: Python is the programming language used in the Jupyter notebooks. A newer version, like 3.4, would be best, but older versions >2.7 should also work (apart from the usual errors, e.g. in print commands)
++ Jupyter :: [[http://jupyter.org/][Jupyter]] is a project, which aims at making science more collaborative and open. Several programming languages can be run inside a browser window, making programms more accesible. Installation instructions can be found [[http://jupyter.readthedocs.io/en/latest/install.html][here]].
+
+ 
+
+** Getting started with Git 
+
+This section introduces the usage of the version control system Git and
+ explaines how to access the public data on Github.
+
+The URL of the project is : https://github.com/computational-humanities/
+The current active project folder is:   topoi
+
+DOCS via Sphinx are available at  https://computational-humanities.github.io/topoi/index.html
+
+*** Branches
+
+There are several active branches in the project. The basic idea is, that every contributor is 
+working in its own branch marked by 'dev_', e.g. 'dev_ot', such that a stable version is allways 
+available in the master branch. 
+
+Changes from the development branches are merged regularly into the master branch by issuing a 
+pull request from the Github website interface. 
+ 
+master # protected, should not be overwritten from another branch by force
+
+gh-pages (for sphinx docs)
+
+dev_NAME (for every collaborator one branch, e.g. dev_gordon, dev_ma)
+
+*** Github account
+
+Every collaborator needs a github account: https://github.com/join?source=header-home
+
+Once the username is know, send mail with username to malte.vogl@hu-berlin.de.
+
+An invitation will be send to the email address you provided while signing in on github. 
+Accept the invitation by following the link. Then continue below...
+
+
+*** Setting up Git 
+
+This explains setting up git on a Ubuntu machine in terminal mode. There is a large choice of GUI 
+programs for Git for Mac and Win machines available. 
+
+First, create a working folder for the Computational Humanities project. Change into that folder.
+Run (every line seperately)
+#+BEGIN_SRC bash
+   git init
+   git config --global user.name "Your user name"
+   git config --gloabl user.email useremail@address.com
+#+END_SRC
+
+To save the username and password for a prescribed amount of time use these two (timeout in seconds): 
+#+BEGIN_SRC bash
+    git config --global credential.helper cache
+    git config --global credential.helper 'cache --timeout=3600'
+#+END_SRC
+
+*** Add repository 
+
+The following line adds a link to the public topoi git, that can be accessed by the shortcut origin
+#+BEGIN_SRC bash
+    git remote add origin https://github.com/computational-humanities/topoi.git
+
+#+END_SRC
+
+*** Getting the data
+
+To retrieve the current set of data from public git
+#+BEGIN_SRC bash
+    git pull origin master
+#+END_SRC
+
+*** Contributing to the repository
+
+The basic idea is as explained above. We create a working branch for every collaborator, by using
+#+BEGIN_SRC bash
+    git checkout -b name_of_branch
+#+END_SRC
+
+To see whether the change of branch has worked out run
+#+BEGIN_SRC bash
+    git branch
+#+END_SRC
+
+This should show the newly named branch in green, together with other branches, like master.
+To make this new branch known to everyone, it has to be pushed to the online repository
+#+BEGIN_SRC bash
+    git push origin name_of_branch
+#+END_SRC
+
+The last step will only work if the user is registered as a collaborator of the topoi project. 
+Git will ask for username and password. These are the ones used for sigining in the user
+to Github, who has registered as a collaborator. 
+
+* The git workflow
+
+After changing to the working folder, first check if you are in the correct branch
+#+BEGIN_SRC bash
+ git branch
+#+END_SRC
+
+If that is not the case, change to it by
+#+BEGIN_SRC bash
+    git checkout name_of_branch
+#+END_SRC
+
+There might be errors due to unsaved changes of files in the master branch.
+
+On the development branch, you ca work as usual, e.g. add a test file to a new folder. 
+
+Running 
+#+BEGIN_SRC bash 
+  git status
+#+END_SRC
+
+should show the changed, deleted, or new file colored in red. This indicates, that the file is not 
+yet in the staging area, an intermediate state of files to be send to the online version of the branch.
+
+To make the changes part of this staging area, use
+#+BEGIN_SRC bash
+ git add filename1 filename2 ...
+#+END_SRC
+to add all changes that should be published. 
+
+To bring the changes to the online version of the branch use first
+#+BEGIN_SRC bash
+ git commit -m 'useful commit message describing the changes'
+#+END_SRC
+
+The changes are now logged for being ready to move to the online repository. However, they are
+not yet there! 
+
+You could continue working, adding changes to bundle a new commit. To finally send them online, run
+#+BEGIN_SRC bash
+    git push origin name_of_branch
+#+END_SRC
+This will send the bundled changes, called commits, to the online version of your working branch.
+
+
+* The Jupyter notebook
+
+This section describes how to work with the Jupyter notebook. 
+
+** Requiered extensions
+
+** Packages
+
+** Usage
+
+
+#+NAME: ImportNotebook
+*** Import Notebook file
+
+Using the above extension jupyter_cms allows to import notebooks as one would do with modules. 
+
+First, create a notebook that contains, optionally, a markdown cell explaining the init procedure, a code cell wit ~# <help>~, and a code cell containing the basic lines of code which should allways be evaluated marked by ~# <api>~
+#+BEGIN_SRC markdown
+## Basic assembly of dataframe
+
+Imports all helper functions and creates a full dataframe "df" with all information concerning manuscripts contained in the JSON file. In addition a new column is added, which contains a transformed numerical date, which gives the century with which a manuscript is dated.
+#+END_SRC
+
+#+BEGIN_SRC python
+ # <help>
+#+END_SRC
+
+#+BEGIN_SRC python
+#  <api>
+from medDiaJson import *
+from roman_date import *
+
+print('Creating dataframe with all Medieval Diagram Information... Stay tuned!')
+df = medDiaCon(237)
+print('Creation finished. Variable is stored as "df"')
+df['date_trf'] = df['date'].apply(lambda row: from_roman(row)*100)
+#+END_SRC
+
+Save all three cells in a Jupyter notebook. If the name of the notebook is Init_Dataframe.ipynb, it can be loaded into another notebook by running
+
+#+BEGIN_SRC python
+%load_ext jupyter_cms
+medDia = load_notebook('./Init_Dataframe.ipynb')
+medDia.help()
+#+END_SRC
+
+This will first import the helper functions, then print the message on creating a dataframe. Once this creation is finished, the next print command is executed and the new dataframe df is extended by applying a the transformation of roman numerals to centuries. All functions and the dataframe itself are then accesible by ~medDia.NAME~. The help call will print the markdown cell of the loaded notebook.
+
+* Helper functions
+
+This section descripes available helper functions for the different projects.
+
+** Medieval Diagrams
+
+Several usefull helper functions are available in the medDiaJson.py module. This subsection gives a short explanation of each function. 
+The module file is assumed to be in the same folder as the Jupyter notebook. Another option is importing a initalization notebook. This 
+is explained in the [[ImportNotebook][Section]] on Jupyter.
+
+Using the following in a Jupyter notebook will import all helper functions by their name. 
+#+BEGIN_SRC python
+from medDiaJson import *
+#+END_SRC
+
+Alternativelly, one can import the module and provide a name
+#+BEGIN_SRC python
+import medDiaJson as medDia
+#+END_SRC
+All functions are now available as medDia.NAME. A further advantage of this is, that executing 
+#+BEGIN_SRC python
+medDia.TAB
+#+END_SRC
+where TAB is the TAB key, will give a list of all possible functions and variables. Moreover, running one of the two 
+#+BEGIN_SRC python
+ medDia.NAME?
+ NAME?
+#+END_SRC
+will display the docstring documentation of each helper function.
+
+*** Presentation
+
++ id2image(dataframe,diaID) :: calls digilib link to image in current tab
+
++ textId2imagegrid(dataframe, author, textID) ::  displays all diagrams for given textID as a grid in current tab
+
++ manID2image(dataframe, manID) :: opens new tab linking to the edition-topoi collection corresponding to the manuscript ID
+
++ altId2image(dataframe, diaID) :: as above but for diagram ID
+
+
+*** Dataframe Preparation
+
++ level0 - level4 ::  helper functions for flattening JSON file for medieval diagram at various levels
+
++ diagCon(manuscr, text, page, diagram) :: uses the flattening functions to generate full dataframe for given diagram
+
++ rangePages, rangeDiag,rangeTexts,rangeMan :: helper functions for getting length of different lists
+
++ biblioCon(manuscr) :: uses all the above functions to generate full dataframe for given manuscript ID, which contains all diagrams of that manuscript
+
++  medDiaCon(x) :: uses biblioCon to generate full dataframe for the first x entries in the JSON file
+
+*** Modification
+
++ uniqueValues(dataframe, key) :: lists all possible values for given key  in the dataframe, e.g., all different authors
+
++ authorKey(dataframe, author, key) :: as above, but gives values belonging to author
+
++ diagYearAuthor(dataframe, author) :: returns dataframe with diagram ID and date for given author
+
++ diaID2Type(dataframe, diaID) :: returns diaType for given diaID
+
++ diaTypeDescr(dataframe,diaType) :: returns description for diagram type, as saved in JSON file
+
++ reducedData(dataframe, keyValueList,debug=False) :: reduces full dataframe to those rows and columns, that full fill the keyValueList (boolean selection), e.g. reducedData(df,[['author','Capella'],['diaTyp', 20.0]]) returns dataframe for diagrams of type 20 and author Capella
+
++ diaAttrPlot(dataframe, author, diaTyp) :: prepares dataframe for plotting occurance of diagram attributes for given author and diagram type. Attributes are summed and sorted by date. Can be used in Bokeh plot. 
+     
+* Tasks
+** TODO Document git and jupyter
+** DONE Extend introduction
+   CLOSED: [2016-08-25 Do 11:20]
+   

@@ -1,0 +1,128 @@
+#+TITLE: Computational Humanities and History of Science
+#+AUTHOR: Malte Vogl
+#+EMAIL: mvogl@mpiwg-berlin.mpg.de
+#+Date: August/2016
+#+LANGUAGE: en
+#+SETUPFILE: theme-bigblow.setup
+
+* Introduction
+
+This document describes the workflow for contributing to the [[http://github.com/computational-humanities/topoi][Computational Humanities]] 
+project on Github. Essential tools are introduced and available helper functions explained. 
+
+** Requiered software
+
+To be able to collaborate, several software packages are necessary. Depending on
+the operating system, installation procedure can be different. Therefore, only package names 
+are mentioned not the actual installation process. 
+
+ 
+
+** Getting started with Git 
+
+This section introduces the usage of the version control system Git and
+ explaines how to access the public data on Github.
+
+The URL of the project is : https://github.com/computational-humanities/
+The current active project folder is:   topoi
+
+DOCS via Sphinx are available at  https://computational-humanities.github.io/topoi/index.html
+
+*** Branches
+
+There are several active branches in the project. The basic idea is, that every contributor is 
+working in its own branch marked by 'dev_', e.g. 'dev_ot', such that a stable version is allways 
+available in the master branch. 
+
+Changes from the development branches are merged regularly into the master branch by issuing a 
+pull request from the Github website interface. 
+ 
+master # protected, should not be overwritten from another branch by force
+
+gh-pages (for sphinx docs)
+
+dev_NAME (for every collaborator one branch, e.g. dev_gordon, dev_ma)
+
+*** Github account
+
+Every collaborator needs a github account: https://github.com/join?source=header-home
+
+Once the username is know, send mail with username to malte.vogl@hu-berlin.de.
+
+An invitation will be send to the email address you provided while signing in on github. 
+Accept the invitation by following the link. Then continue below...
+
+
+*** Setting up Git 
+
+This explains setting up git on a Ubuntu machine in terminal mode. There is a large choice of GUI 
+programs for Git for Mac and Win machines available. 
+
+First, create a working folder for the Computational Humanities project. Change into that folder.
+Run (every line seperately)
+#+BEGIN_SRC bash
+   git init
+   git config --global user.name "Your user name"
+   git config --gloabl user.email useremail@address.com
+#+END_SRC
+
+To save the username and password for a prescribed amount of time use these two (timeout in seconds): 
+#+BEGIN_SRC bash
+    git config --global credential.helper cache
+    git config --global credential.helper 'cache --timeout=3600'
+#+END_SRC
+
+*** Add repository 
+
+The following line adds a link to the public topoi git, that can be accessed by the shortcut origin
+#+BEGIN_SRC bash
+    git remote add origin https://github.com/computational-humanities/topoi.git
+
+#+END_SRC
+
+*** Getting the data
+
+To retrieve the current set of data from public git
+#+BEGIN_SRC bash
+    git pull origin master
+#+END_SRC
+
+*** Contributing to the repository
+
+The basic idea is as explained above. We create a working branch for every collaborator, by using
+#+BEGIN_SRC bash
+    git checkout -b name_of_branch
+#+END_SRC
+
+To see whether the change of branch has worked out run
+#+BEGIN_SRC bash
+    git branch
+#+END_SRC
+
+This should show the newly named branch in green, together with other branches, like master.
+To make this new branch known to everyone, it has to be pushed to the online repository
+#+BEGIN_SRC bash
+    git push origin name_of_branch
+#+END_SRC
+
+The last step will only work if the user is registered as a collaborator of the topoi project. 
+Git will ask for username and password. These are the ones used for sigining in the user
+to Github, who has registered as a collaborator. 
+
+
+** The essential Jupyter notebook
+*** Requiered extensions
+*** Packages
+** Mothers little helper functions
+*** Preparation
+*** Presentation
+*** Modification
+
+* Tasks
+** DONE Start new file in org mode
+** TODO Document git and jupyter
+** DONE Add outline
+** TODO Write introduction
+   SCHEDULED: <2016-08-25 Do>
+
+

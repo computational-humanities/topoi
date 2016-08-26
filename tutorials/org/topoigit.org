@@ -183,16 +183,6 @@ ipython kernelspec install-self
 #+END_SRC
 This first creates a virtual environment based on Python 3, named py3k. After activating this environment, ipython corresponds to the Python 3 version and installs the correct kernel.
 
-** Links to examples or learning resources
-
-+ Gallery for Jupyter notebooks :: https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks
-+ Some tricks with Jupyter :: https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/
-+ and more from same source :: https://blog.dominodatalab.com/interactive-dashboards-in-jupyter/
-+ Publication ready notebooks :: http://blog.juliusschulz.de/blog/ultimate-ipython-notebook
-+ JupyterHUB :: https://github.com/jupyterhub/jupyterhub
-+ Jupyter Dashboard :: https://github.com/jupyter-incubator/dashboards
-
-
 ** Reacquired and useful extensions
    
 *** nbstripout
@@ -274,7 +264,7 @@ available for the Python3 kernel.
 + matplotlib :: ~pip install matplotlib~, plotting 2D graphs of all sorts, [[http://matplotlib.org/][link]]
 + bokeh :: ~pip install bokeh~, interactive plotting with zooming, panning, etc, [[http://bokeh.pydata.org/en/latest/][link]]
 + folium :: ~pip install folium~, interactive plotting on maps, using leaflet, [[https://github.com/python-visualization/folium][link]]
-
+	    
 ** Usage
 
 *** Import Notebook file

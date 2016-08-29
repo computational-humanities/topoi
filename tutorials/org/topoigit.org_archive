@@ -64,3 +64,20 @@ This will send the bundled changes, called commits, to the online version of you
 
 
 
+
+* Links to examples or learning resources
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-08-26 Fr 16:00
+  :ARCHIVE_FILE: ~/Dokumente/TopoiGit/tutorials/org/topoigit.org
+  :ARCHIVE_OLPATH: Jupyter notebook
+  :ARCHIVE_CATEGORY: topoigit
+  :END:
+
++ Gallery for Jupyter notebooks :: https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks
++ Some tricks with Jupyter :: https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/
++ and more from same source :: https://blog.dominodatalab.com/interactive-dashboards-in-jupyter/
++ Publication ready notebooks :: http://blog.juliusschulz.de/blog/ultimate-ipython-notebook
++ JupyterHUB :: https://github.com/jupyterhub/jupyterhub
++ Jupyter Dashboard :: https://github.com/jupyter-incubator/dashboards
++ Folium and Json Markers :: http://bl.ocks.org/wrobstory/5609803 
+

@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Computational Humanities and History of Science</title>
+<!-- 2016-08-26 Fr 14:32 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Malte Vogl" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Computational Humanities and History of Science</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introduction</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Required software</a></li>
+<li><a href="#sec-1-2">1.2. Getting started with Git</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. Branches</a></li>
+<li><a href="#sec-1-2-2">1.2.2. Github account</a></li>
+<li><a href="#sec-1-2-3">1.2.3. Setting up Git</a></li>
+<li><a href="#sec-1-2-4">1.2.4. Add repository</a></li>
+<li><a href="#sec-1-2-5">1.2.5. Getting the data</a></li>
+<li><a href="#sec-1-2-6">1.2.6. Contributing to the repository</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Git work flow</a></li>
+<li><a href="#sec-3">3. Jupyter notebook</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Adding Python 3 kernel</a></li>
+<li><a href="#sec-3-2">3.2. Links to examples or learning resources</a></li>
+<li><a href="#sec-3-3">3.3. Reacquired and useful extensions</a>
+<ul>
+<li><a href="#sec-3-3-1">3.3.1. nbstripout</a></li>
+<li><a href="#sec-3-3-2">3.3.2. Jupyter extensions</a></li>
+<li><a href="#sec-3-3-3">3.3.3. Jupyter Nbextensions Configurator</a></li>
+<li><a href="#sec-3-3-4">3.3.4. jupyter_cms</a></li>
+<li><a href="#sec-3-3-5">3.3.5. ipywidgets</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-4">3.4. Python-Packages</a></li>
+<li><a href="#sec-3-5">3.5. Usage</a>
+<ul>
+<li><a href="#sec-3-5-1">3.5.1. Import Notebook file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Helper functions</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Medieval Diagrams</a>
+<ul>
+<li><a href="#sec-4-1-1">4.1.1. Presentation</a></li>
+<li><a href="#sec-4-1-2">4.1.2. Dataframe Preparation</a></li>
+<li><a href="#sec-4-1-3">4.1.3. Modification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Tasks</a>
+<ul>
+<li><a href="#sec-5-1">5.1. <span class="todo TODO">TODO</span> Add python visualization examples</a></li>
+<li><a href="#sec-5-2">5.2. <span class="todo TODO">TODO</span> Extend Jupyter usage</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This document describes the work flow for contributing to the <a href="http://github.com/computational-humanities/topoi">Computational Humanities</a> 
+project on Github. Essential tools are introduced and available helper functions explained. 
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Required software</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+To be able to collaborate, several software packages are necessary. Depending on
+the operating system, installation procedures can be different. Therefore, only package names 
+are mentioned not the actual installation process. 
+</p>
+
+<dl class="org-dl">
+<dt> Git </dt><dd>The basic git software for terminal operations. Additionally, several GUI programs exist for all platforms.
+</dd>
+<dt> Python </dt><dd>Python is the programming language used in the Jupyter notebooks. A newer version, like 3.4, would be best, but older versions &gt;2.7 should also work (apart from the usual errors, e.g. in print commands)
+</dd>
+<dt> Jupyter </dt><dd><a href="http://jupyter.org/">Jupyter</a> is a project, which aims at making science more collaborative and open. Several programming languages can be run inside a browser window, making programs more accessible. Installation instructions can be found <a href="http://jupyter.readthedocs.io/en/latest/install.html">here</a>.
+</dd>
+</dl>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Getting started with Git</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+This section introduces the usage of the version control system Git and
+ explains how to access the public data on Github.
+</p>
+
+<p>
+The URL of the project is : <a href="https://github.com/computational-humanities/">https://github.com/computational-humanities/</a>
+The current active project folder is:   topoi
+</p>
+
+<p>
+DOCS via Sphinx are available at  <a href="https://computational-humanities.github.io/topoi/index.html">https://computational-humanities.github.io/topoi/index.html</a>
+</p>
+</div>
+
+<div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Branches</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+There are several active branches in the project. The basic idea is, that every contributor is 
+working in its own branch marked by 'dev_', e.g. 'dev_ot', such that a stable version is always 
+available in the master branch. 
+</p>
+
+<p>
+Changes from the development branches are merged regularly into the master branch by issuing a 
+pull request from the Github website interface. 
+</p>
+
+<p>
+master # protected, should not be overwritten from another branch by force
+</p>
+
+<p>
+gh-pages (for sphinx docs)
+</p>
+
+<p>
+dev_NAME (for every collaborator one branch, e.g. dev_gordon, dev_ma)
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Github account</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Every collaborator needs a github account: <a href="https://github.com/join?source=header-home">https://github.com/join?source=header-home</a>
+</p>
+
+<p>
+Once the user name is know, send mail with user name to malte.vogl@hu-berlin.de.
+</p>
+
+<p>
+An invitation will be send to the email address you provided while signing in on github. 
+Accept the invitation by following the link. Then continue below&#x2026;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Setting up Git</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+This explains setting up git on a Ubuntu machine in terminal mode. There is a large choice of GUI 
+programs for Git for Mac and Win machines available. 
+</p>
+
+<p>
+First, create a working folder for the Computational Humanities project. Change into that folder.
+Run (every line seperately)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git init
+git config --global user.name "Your user name"
+git config --gloabl user.email useremail@address.com
+</pre>
+</div>
+
+<p>
+To save the user name and password for a prescribed amount of time use these two (timeout in seconds): 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=3600'
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Add repository</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+The following line adds a link to the public topoi git, that can be accessed by the shortcut origin
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git remote add origin https://github.com/computational-humanities/topoi.git
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> Getting the data</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+To retrieve the current set of data from public git
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git pull origin master
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> Contributing to the repository</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<p>
+The basic idea is as explained above. We create a working branch for every collaborator, by using
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git checkout -b name_of_branch
+</pre>
+</div>
+
+<p>
+To see whether the change of branch has worked out run
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git branch
+</pre>
+</div>
+
+<p>
+This should show the newly named branch in green, together with other branches, like master.
+To make this new branch known to everyone, it has to be pushed to the online repository
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git push origin name_of_branch
+</pre>
+</div>
+
+<p>
+The last step will only work if the user is registered as a collaborator of the topoi project. 
+Git will ask for user name and password. These are the ones used for signing in the user
+to Github, who has registered as a collaborator. 
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Git work flow</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+After changing to the working folder, first check if you are in the correct branch
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git branch
+</pre>
+</div>
+
+<p>
+If that is not the case, change to it by
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git checkout name_of_branch
+</pre>
+</div>
+
+<p>
+There might be errors due to unsaved changes of files in the master branch.
+</p>
+
+<p>
+On the development branch, you ca work as usual, e.g. add a test file to a new folder. 
+</p>
+
+<p>
+Running 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git status
+</pre>
+</div>
+
+<p>
+should show the changed, deleted, or new file colored in red. This indicates, that the file is not 
+yet in the staging area, an intermediate state of files to be send to the online version of the branch.
+</p>
+
+<p>
+To make the changes part of this staging area, use
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git add filename1 filename2 ...
+</pre>
+</div>
+<p>
+to add all changes that should be published. 
+</p>
+
+<p>
+To bring the changes to the online version of the branch use first
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git commit -m 'useful commit message describing the changes'
+</pre>
+</div>
+
+<p>
+The changes are now logged for being ready to move to the online repository. However, they are
+not yet there! 
+</p>
+
+<p>
+You could continue working, adding changes to bundle a new commit. To finally send them online, run
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">git push origin name_of_branch
+</pre>
+</div>
+<p>
+This will send the bundled changes, called commits, to the online version of your working branch.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Jupyter notebook</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This section describes how to work with the Jupyter notebook. 
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Adding Python 3 kernel</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Depending on the python-pip version used while installing jupyter, it happens that only a Python 2 kernel is available after starting the notebook server. 
+This can be changed by running the following commands
+</p>
+<pre class="example">
+sudo apt-get install python3 &amp;&amp; python3-pip
+pip3 install jupyter
+ipython3 kernelspec install-self
+</pre>
+<p>
+on a Ubuntu system. 
+</p>
+
+<p>
+For Anaconda users, the following might be an option
+</p>
+<pre class="example">
+conda create -n py3k python=3 anaconda
+source activate py3k
+ipython kernelspec install-self
+</pre>
+<p>
+This first creates a virtual environment based on Python 3, named py3k. After activating this environment, ipython corresponds to the Python 3 version and installs the correct kernel.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Links to examples or learning resources</h3>
+<div class="outline-text-3" id="text-3-2">
+<dl class="org-dl">
+<dt> Gallery for Jupyter notebooks </dt><dd><a href="https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks">https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks</a>
+</dd>
+<dt> Some tricks with Jupyter </dt><dd><a href="https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/">https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/</a>
+</dd>
+<dt> and more from same source </dt><dd><a href="https://blog.dominodatalab.com/interactive-dashboards-in-jupyter/">https://blog.dominodatalab.com/interactive-dashboards-in-jupyter/</a>
+</dd>
+<dt> Publication ready notebooks </dt><dd><a href="http://blog.juliusschulz.de/blog/ultimate-ipython-notebook">http://blog.juliusschulz.de/blog/ultimate-ipython-notebook</a>
+</dd>
+<dt> JupyterHUB </dt><dd><a href="https://github.com/jupyterhub/jupyterhub">https://github.com/jupyterhub/jupyterhub</a>
+</dd>
+<dt> Jupyter Dashboard </dt><dd><a href="https://github.com/jupyter-incubator/dashboards">https://github.com/jupyter-incubator/dashboards</a>
+</dd>
+<dt> Folium and Json Markers </dt><dd><a href="http://bl.ocks.org/wrobstory/5609803">http://bl.ocks.org/wrobstory/5609803</a> 
+</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Reacquired and useful extensions</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> nbstripout</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<p>
+Since we are using Github for version control, at least this extension for Jupyter notebooks is mandatory.
+The <a href="https://pypi.python.org/pypi/nbstripout/0.2.7">python package</a> acts as a filter before pulling or pushing to the Github repository. 
+</p>
+
+<p>
+Installing systemwide using 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">pip install nbstripout
+</pre>
+</div>
+
+<p>
+and setting-up with
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">nbstripout --install
+</pre>
+</div>
+
+<p>
+It strips all output and information on the execution of cells from the notebook. This allows to compare the content of the actual code cells. without this package, Github treats Jupyter notebooks as binary, and automatic merges are not possible. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3-2" class="outline-4">
+<h4 id="sec-3-3-2"><span class="section-number-4">3.3.2</span> Jupyter extensions</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<p>
+Jupyter extensions are useful helper functions, developed by third party. To get an overview, go to <a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions">this site</a>.
+To install all extensions, simply use
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
+jupyter contrib nbextension install --user
+</pre>
+</div>
+<p>
+which first downloads the latest version from Github and installs it via pip and then makes the extensions available to Jupyter.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3-3" class="outline-4">
+<h4 id="sec-3-3-3"><span class="section-number-4">3.3.3</span> Jupyter Nbextensions Configurator</h4>
+<div class="outline-text-4" id="text-3-3-3">
+<p>
+All extensions for Jupyter can be controlled with the Jupyter Nbextensions Configurator, <a href="https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator">link</a>. 
+</p>
+
+<p>
+Installation and setup via
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">pip install jupyter_nbextensions_configurator
+jupyter nbextensions_configurator enable --user
+</pre>
+</div>
+
+<p>
+Once a notebook server is started, visit <code>http://localhost:8888/nbextensions</code> to see all available extensions. Click on any to configure. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3-4" class="outline-4">
+<h4 id="sec-3-3-4"><span class="section-number-4">3.3.4</span> jupyter_cms</h4>
+<div class="outline-text-4" id="text-3-3-4">
+<p>
+This <a href="https://github.com/jupyter-incubator/contentmanagement">extension</a> for Jupyter notebooks allows to import full notebooks as if they were modules. 
+</p>
+
+<p>
+For Jupyter versions greater 4.2 (check by <code>jupyter notebook --version</code>) installation is simply 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">pip install jupyter_cms
+jupyter cms quick-setup --sys-prefix
+</pre>
+</div>
+<p>
+and restart notebook server.
+</p>
+
+<p>
+For other Jupyter version, check the above link for instructions. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3-5" class="outline-4">
+<h4 id="sec-3-3-5"><span class="section-number-4">3.3.5</span> ipywidgets</h4>
+<div class="outline-text-4" id="text-3-3-5">
+<p>
+The interactive HTML widgets allow to create interactive notebooks with sliders, dropdown menues or check-boxes
+Installation is via
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">pip install ipywidgets
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
+</pre>
+</div>
+<p>
+possibly requiering a restart. 
+</p>
+
+<p>
+Examples include
+</p>
+<dl class="org-dl">
+<dt> ipyleaflet </dt><dd>a leaflet widget for interactive maps, <a href="https://github.com/ellisonbg/ipyleaflet">link</a> 
+</dd>
+<dt> bqplot </dt><dd>for interactive plotting, <a href="https://github.com/bloomberg/bqplot">link</a>
+</dd>
+<dt> nature demo </dt><dd>running interactive plot on private Jupyter server, <a href="http://www.nature.com/news/ipython-interactive-demo-7.21492">link</a>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Python-Packages</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Useful or required Python packages. If several Python version are available on the system, the command pip might point to Python 2. Therefore, use pip3 for installing packages 
+available for the Python3 kernel.
+</p>
+
+<dl class="org-dl">
+<dt> pandas </dt><dd><code>pip install pandas</code>, the standard for data science, <a href="http://pandas.pydata.org/">link</a>
+</dd>
+<dt> numpy </dt><dd><code>pip install numpy</code>, for math and numerics, usefull for large datasets, <i>link</i>
+</dd>
+<dt> beatifulsoup </dt><dd><code>pip install beautifulsoup4</code>, for getting data from websites, <a href="https://www.crummy.com/software/BeautifulSoup/">link</a>
+</dd>
+<dt> matplotlib </dt><dd><code>pip install matplotlib</code>, plotting 2D graphs of all sorts, <a href="http://matplotlib.org/">link</a>
+</dd>
+<dt> bokeh </dt><dd><code>pip install bokeh</code>, interactive plotting with zooming, panning, etc, <a href="http://bokeh.pydata.org/en/latest/">link</a>
+</dd>
+<dt> folium </dt><dd><code>pip install folium</code>, interactive plotting on maps, using leaflet, <a href="https://github.com/python-visualization/folium">link</a>
+</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Usage</h3>
+<div class="outline-text-3" id="text-3-5">
+</div><div id="outline-container-sec-3-5-1" class="outline-4">
+<h4 id="sec-3-5-1"><span class="section-number-4">3.5.1</span> Import Notebook file</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<p>
+<a id="ImportNotebook" name="ImportNotebook"></a>
+Using the above extension jupyter_cms allows to import notebooks as one would do with modules. 
+</p>
+
+<p>
+First, create a notebook that contains, optionally, a markdown cell explaining the init procedure, a code cell wit <code># &lt;help&gt;</code>, and a code cell containing the basic lines of code which should always be evaluated marked by <code># &lt;api&gt;</code>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-markdown">## Basic assembly of dataframe
+
+Imports all helper functions and creates a full dataframe "df" with all information concerning manuscripts contained in the JSON file. In addition a new column is added, which contains a transformed numerical date, which gives the century with which a manuscript is dated.
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-python"># &lt;help&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-python">#  &lt;api&gt;
+from medDiaJson import *
+from roman_date import *
+
+print('Creating dataframe with all Medieval Diagram Information... Stay tuned!')
+df = medDiaCon(237)
+print('Creation finished. Variable is stored as "df"')
+df['date_trf'] = df['date'].apply(lambda row: from_roman(row)*100)
+</pre>
+</div>
+
+<p>
+Save all three cells in a Jupyter notebook. If the name of the notebook is Init_Dataframe.ipynb, it can be loaded into another notebook by running
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">%load_ext jupyter_cms
+medDia = load_notebook('./Init_Dataframe.ipynb')
+medDia.help()
+</pre>
+</div>
+
+<p>
+This will first import the helper functions, then print the message on creating a dataframe. Once this creation is finished, the next print command is executed and the new dataframe df is extended by applying a the transformation of roman numerals to centuries. All functions and the dataframe itself are then accesible by <code>medDia.NAME</code>. The help call will print the markdown cell of the loaded notebook.
+</p>
+
+<p>
+More usage scenarios are explained <a href="https://github.com/jupyter-incubator/contentmanagement/blob/master/etc/notebooks/cookbooks_demo/use_cookbooks.ipynb">here</a>.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Helper functions</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+This section describes available helper functions for the different projects.
+</p>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Medieval Diagrams</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Several useful helper functions are available in the medDiaJson.py module. This subsection gives a short explanation of each function. 
+The module file is assumed to be in the same folder as the Jupyter notebook. Another option is importing a initialization notebook. This 
+is explained in the <a href="#ImportNotebook">Section</a> on Jupyter.
+</p>
+
+<p>
+Using the following in a Jupyter notebook will import all helper functions by their name. 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">from medDiaJson import *
+</pre>
+</div>
+
+<p>
+Alternatively, one can import the module and provide a name
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">import medDiaJson as medDia
+</pre>
+</div>
+<p>
+All functions are now available as medDia.NAME. A further advantage of this is, that executing 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">medDia.TAB
+</pre>
+</div>
+<p>
+where TAB is the TAB key, will give a list of all possible functions and variables. Moreover, running one of the two 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">medDia.NAME?
+NAME?
+</pre>
+</div>
+<p>
+will display the docstring documentation of each helper function.
+</p>
+</div>
+
+<div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> Presentation</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<dl class="org-dl">
+<dt> id2image(dataframe,diaID) </dt><dd>calls digilib link to image in current tab
+</dd>
+
+<dt> textId2imagegrid(dataframe, author, textID) </dt><dd>displays all diagrams for given textID as a grid in current tab
+</dd>
+
+<dt> manID2image(dataframe, manID) </dt><dd>opens new tab linking to the edition-topoi collection corresponding to the manuscript ID
+</dd>
+
+<dt> altId2image(dataframe, diaID) </dt><dd>as above but for diagram ID
+</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> Dataframe Preparation</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<dl class="org-dl">
+<dt> level0 - level4 </dt><dd>helper functions for flattening JSON file for medieval diagram at various levels
+</dd>
+
+<dt> diagCon(manuscr, text, page, diagram) </dt><dd>uses the flattening functions to generate full dataframe for given diagram
+</dd>
+
+<dt> rangePages, rangeDiag,rangeTexts,rangeMan </dt><dd>helper functions for getting length of different lists
+</dd>
+
+<dt> biblioCon(manuscr) </dt><dd>uses all the above functions to generate full dataframe for given manuscript ID, which contains all diagrams of that manuscript
+</dd>
+
+<dt> medDiaCon(x) </dt><dd>uses biblioCon to generate full dataframe for the first x entries in the JSON file
+</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-3" class="outline-4">
+<h4 id="sec-4-1-3"><span class="section-number-4">4.1.3</span> Modification</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<dl class="org-dl">
+<dt> uniqueValues(dataframe, key) </dt><dd>lists all possible values for given key  in the dataframe, e.g., all different authors
+</dd>
+
+<dt> authorKey(dataframe, author, key) </dt><dd>as above, but gives values belonging to author
+</dd>
+
+<dt> diagYearAuthor(dataframe, author) </dt><dd>returns dataframe with diagram ID and date for given author
+</dd>
+
+<dt> diaID2Type(dataframe, diaID) </dt><dd>returns diaType for given diaID
+</dd>
+
+<dt> diaTypeDescr(dataframe,diaType) </dt><dd>returns description for diagram type, as saved in JSON file
+</dd>
+
+<dt> reducedData(dataframe, keyValueList,debug=False) </dt><dd>reduces full dataframe to those rows and columns, that full fill the keyValueList (boolean selection), e.g. reducedData(df,[['author','Capella'],['diaTyp', 20.0]]) returns dataframe for diagrams of type 20 and author Capella
+</dd>
+
+<dt> diaAttrPlot(dataframe, author, diaTyp) </dt><dd>prepares dataframe for plotting occurance of diagram attributes for given author and diagram type. Attributes are summed and sorted by date. Can be used in Bokeh plot. 
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Tasks</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> <span class="todo TODO">TODO</span> Add python visualization examples</h3>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> <span class="todo TODO">TODO</span> Extend Jupyter usage</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: August/2016</p>
+<p class="author">Author: Malte Vogl</p>
+<p class="date">Created: 2016-08-26 Fr 14:32</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

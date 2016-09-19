@@ -10,6 +10,5 @@ langid
 mpld3
 nbpresent
 seaborn
-treetagger
 vincent
 Whoosh

@@ -1,0 +1,101 @@
+ObjID: 
+Aritificial ID to identify a specific sundial with all its dialfaces.
+
+Site: 
+The city or place the sundial was originaly crafted for. 
+
+ConeRad1: 
+Under ideal circumstances, the cone and the Front UP plane of a sundial form a circle. In reality the angle between the Front UP plane and the cone axis has a slight offset, which leads to an elliptic cone section. ConeRad1 specifies the vertical radius of this ellipse in Millimeter. 
+
+ConeRad2: 
+ConeRad2 specifies the horizontal radius of the elliptic cone section between cone and the Front UP plane in Millimeter. 
+
+HeightWest: 
+HeightWest states the length of the western intersection line between the idealized Top- and Bottom planes of a sundial in Millimeter.
+
+HeightEast: 
+HeightEast states the length of the eastern intersection line between the idealized Top- and Bottom planes of a sundial in Millimeter.
+
+aver. Height: 
+Average Height either states the calculated average height of a sundial or, if it is incalculable, the minimal height, the sundial must have had. 
+In case HeightEast and HeightWest could be calculated, it gives the average of both numbers, if only one of them is calculable, it just states that number again. 
+If none of the heights are present, the function checks if either the Top- or the Bottom plane are available. If one of them exists, it outputs the length of the vector in Millimeter between the existing plane and the data point of the corresponding 3D modell, which farthest away.
+
+aver. Height type:
+Average Height type states 'calculated' if the aver. Height was derived from HeightEast, HeightWest or both. 
+It states 'minimal' if it was derived by means of interpolation between a plane and a 3D Point. 
+
+WidthBB:
+WidthBB states the length of the bottom intersection line at the back of the sundial between the idealized East- and West planes in Millimeter.
+
+WidthBF:
+WidthBF states the length of the bottom intersection line at the front of the sundial between the idealized East- and West planes in Millimeter.
+
+WidthMF:
+WidthMF states the length of the intersection line at the front of the sundial in Millimeter where the planes Front UP and Front LP meet. The length is measured between the idealized East- and West planes of the sundial.
+
+WidthTF:
+WidthTF states the length of the intersection line at the front-top of the sundial between the idealized East- and West planes in Millimeter.
+
+WidthTB:
+WidthTF states the length of the intersection line at the front-back of the sundial between the idealized East- and West planes in Millimeter.
+
+aver. Width:
+Average Width either states the calculated average width of a sundial or, if it is incalculable, the estimated width. 
+If either one or more of the aforementioned widths could be calculated, aver. Width gives the average of these results.
+If all width were incalculable, aver. Width checks if HourLine6 and at least one of the eastern or western planes are available in the 3D modell of the sundial. 
+Since Hourline6 is located in the middle of a sundial, the length of a normal vector from a point on that line to one of the planes results in a fairly exact estimation of the original width of the sundial. 
+
+av. Width type:
+Average Width type states 'calculated' if the aver. Width was derived from one or more of the calculated widths. 
+It states 'estimated' if it was derived by means of interpolation between a plane and a 3D Point.
+
+Latitude:
+Latitude corresponding to the 'site' the sundial was assigned to.
+
+Longitude:
+Longitude corresponding to the 'site' the sundial was assigned to.
+
+Ang. Plane FUPT:
+Angle between the idealized Front UP- und Top planes.
+
+cal.Lat. FUPT:
+The angle between the Top and the Front UP planes in a conical sundial directly corresponds to the latitude at which it shows the correct time. 
+This latitude is calculated by substracting the angle between these planes from 90°. 
+Cal. Lat. FUPT states the result of 90° - 'Ang. Plane FUPT' in Degrees. 
+
+Ang. Edge West:
+Since an ancient sundial isn't always perfectly symetrical, the angle between the planes may vary on each side. 
+Ang. Edge West states the angle of the vector between the western Top-Front corner and the western Top-Back corner as well as the vector between the western Top-Front corner and the western intersection point of the Front UP und Front LP planes. 
+
+cal. Lat. Edge West:
+Cal. Lat. Edge West states the result of 90° - 'Ang. Edge West' in Degrees. 
+
+Ang. Edge East:
+Ang. Edge East states the angle of the vector between the eastern Top-Front corner and the eastern Top-Back corner as well as the vector between the eastern Top-Front corner and the eastern intersection point of the Front UP und Front LP planes.
+
+cal. Lat. Edge East:
+Cal. Lat. Edge East states the result of 90° - 'Ang. Edge East' in Degrees.
+
+opening Width:
+Opening Widht states the distance between the intersection points of planes Front UP and Top as well as conic section in Millimeter.
+
+opening Angle:
+Opening Angle describes the angle between the cone axis and the surface lines of the cones (=Hourlines).
+
+Sw:
+S describes an aid line used by the contructors of ancient sundials. It is a line on both sides of a sundial, starting at the point where the Front UP and Front LP planes meet. It is perpendicular to the Top plane.
+Sw states the length of S on the western side of the sundial in Millimeter. 
+
+Se:
+Se states the length of S on the eastern side of the sundial in Millimeter.
+
+Gw:
+G is a second aid line used to construct conical sundials. It is a line on both sides of a sundial, starting at the point where construction line S and the Top plane meet and ending at the front of the Top plane. 
+Gw states the length of G on the western side of the sundial in Millimeter.
+
+Ge:
+Ge states the length of G on the eastern side of the sundial in Millimeter.
+
+G:S: 
+G:S gives the ratio of G and S. In order to facilitate comparisons, G is normalized to 1. 

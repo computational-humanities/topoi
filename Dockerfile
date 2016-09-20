@@ -3,14 +3,14 @@ FROM andrewosh/binder-base:latest
 # based on examples from binder and jupyter showcase
 MAINTAINER Malte Vogl <malte.vogl@hu-berlin.de>
 
-RUN mkdir /home/main/notebooks
-RUN chown main:main /home/main/notebooks
-WORKDIR /home/main/notebooks
+#RUN mkdir /home/main/notebooks
+#RUN chown main:main /home/main/notebooks
+#WORKDIR /home/main/notebooks
 
 USER root
 
-COPY . /home/main/notebooks/
-RUN chown -R main:main $HOME/notebooks
+#COPY . /home/main/notebooks/
+#RUN chown -R main:main $HOME/notebooks
 
 # for declarativewidgets
 RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - && \
@@ -22,7 +22,7 @@ RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - && \
 
 USER main
 
-RUN find $HOME/notebooks -name '*.ipynb' -exec jupyter trust {} \;
+#RUN find $HOME/notebooks -name '*.ipynb' -exec jupyter trust {} \;
 
 ENV DASHBOARDS_VERSION 0.5.0
 ENV DASHBOARDS_BUNDLERS_VERSION 0.7.0

@@ -19,7 +19,7 @@ import requests
 # this should work on any system.
 
 script_dir = os.path.dirname(__file__)
-rel_path = 'MedievalDiagrams_DB.json'
+rel_path = '../data/MedievalDiagrams_DB.json'
 abs_file_path = os.path.join(script_dir, rel_path)
 
 data_file = open(abs_file_path, encoding='utf-8')

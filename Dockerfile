@@ -3,26 +3,7 @@ FROM andrewosh/binder-base:latest
 # based on examples from binder and jupyter showcase
 MAINTAINER Malte Vogl <malte.vogl@hu-berlin.de>
 
-#RUN mkdir /home/main/notebooks
-#RUN chown main:main /home/main/notebooks
-#WORKDIR /home/main/notebooks
-
-USER root
-
-#COPY . /home/main/notebooks/
-#RUN chown -R main:main $HOME/notebooks
-
-# for declarativewidgets
-#RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - && \
-#    apt-get install -y nodejs npm && \
-#    npm install -g bower
-
-# Add dependency
-# TODO: treetagger installation via curl
-
 USER main
-
-#RUN find $HOME/notebooks -name '*.ipynb' -exec jupyter trust {} \;
 
 ENV DASHBOARDS_VERSION 0.5.0
 ENV DASHBOARDS_BUNDLERS_VERSION 0.7.0
@@ -52,10 +33,6 @@ ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # Install requirements for Python 3
-RUN /home/main/anaconda/envs/python3/bin/pip install -r requirements.txt
-
-# Install nbextension via conda-forge
-RUN conda install -c conda-forge jupyter_contrib_nbextensions 
-
-#USER main
-#WORKDIR $HOME/notebooks
+RUN conda install -c conda-forge jupyter_contrib_nbextensions && \
+    bash -c "source activate python3 && \
+        pip install -r requirements.txt

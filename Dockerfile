@@ -49,8 +49,10 @@ RUN bash -c "source activate python3 && pip install \
 
 # Install requirements for Python
 ADD requirements.txt requirements.txt
-ADD handle-requirements.py handle-requirements.py
-RUN python handle-requirements.py
+RUN pip install -r requirements.txt
+
+# Install requirements for Python 3
+RUN /home/main/anaconda/envs/python3/bin/pip install -r requirements.txt
 
 # Install nbextension via conda-forge
 RUN conda install -c conda-forge jupyter_contrib_nbextensions 

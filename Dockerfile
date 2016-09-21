@@ -26,7 +26,6 @@ USER main
 
 ENV DASHBOARDS_VERSION 0.5.0
 ENV DASHBOARDS_BUNDLERS_VERSION 0.7.0
-ENV DECL_WIDGETS_VERSION 0.5.0
 ENV CMS_VERSION 0.5.0
 
 # get to the latest jupyter release and necessary libraries
@@ -36,20 +35,16 @@ RUN conda install -y jupyter seaborn futures && \
 
 # install incubator extensions
 RUN pip install jupyter_dashboards==$DASHBOARDS_VERSION \
-    jupyter_declarativewidgets==$DECL_WIDGETS_VERSION \
     jupyter_cms==$CMS_VERSION \
     jupyter_dashboards_bundlers==$DASHBOARDS_BUNDLERS_VERSION
 RUN jupyter dashboards install --user --symlink && \
-    jupyter declarativewidgets install --user --symlink && \
     jupyter cms install --user --symlink && \
     jupyter dashboards activate && \
-    jupyter declarativewidgets activate && \
     jupyter cms activate && \
     jupyter dashboards_bundlers activate
 
 # install kernel-side incubator extensions for python3 environment too
 RUN bash -c "source activate python3 && pip install \
-    jupyter_declarativewidgets==$DECL_WIDGETS_VERSION \
     jupyter_cms==$CMS_VERSION"
 
 # Install requirements for Python

@@ -13,9 +13,9 @@ USER root
 #RUN chown -R main:main $HOME/notebooks
 
 # for declarativewidgets
-RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - && \
-    apt-get install -y nodejs npm && \
-    npm install -g bower
+#RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - && \
+#    apt-get install -y nodejs npm && \
+#    npm install -g bower
 
 # Add dependency
 # TODO: treetagger installation via curl
@@ -60,5 +60,5 @@ RUN python handle-requirements.py
 # Install nbextension via conda-forge
 RUN conda install -c conda-forge jupyter_contrib_nbextensions 
 
-USER main
-WORKDIR $HOME/notebooks
+#USER main
+#WORKDIR $HOME/notebooks

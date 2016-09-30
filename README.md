@@ -2,7 +2,7 @@
 
 [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org:/repo/computational-humanities/topoi)
 
-This collection of Jupyter notebooks is being developed at the [Topoi cluster of excellence](https://www.topoi.org/), a joined effort of Humboldt University and Free University, and the [Max Planck Institut for the History of Science](https://www.mpiwg-berlin.mpg.de/en/). All institutes are based in Berlin, Germany. To provide some level of interaction, we use the Binder service as an intermediate tool. Each folder represents work on one thematic unit. The scope of notebooks ranges from short examples to full research naratives. 
+This collection of Jupyter notebooks is being developed at the [Topoi cluster of excellence](https://www.topoi.org/), a joined effort of Humboldt University and Free University, and the [Max Planck Institute for the History of Science](https://www.mpiwg-berlin.mpg.de/en/). All institutes are based in Berlin, Germany. To provide some level of interaction, we use the Binder service as an intermediate tool. Each folder represents work on one thematic unit. The scope of notebooks ranges from short examples to full research naratives. 
 
 ## Notes:
 

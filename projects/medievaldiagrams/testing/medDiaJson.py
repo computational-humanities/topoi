@@ -22,7 +22,7 @@ script_dir = os.path.dirname(__file__)
 rel_path = '../data/MedievalDiagrams_DB.json'
 abs_file_path = os.path.join(script_dir, rel_path)
 
-data_file = open(abs_file_path)
+data_file = open(abs_file_path,encoding='utf-8')
 
 # First load with json.load().
 # Manipulations are made using pandas.

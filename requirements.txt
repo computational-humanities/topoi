@@ -1,0 +1,14 @@
+folium
+ijson
+imagesize
+jsonschema
+jupyter-cms
+jupyter-contrib-nbextensions
+jupyter-dashboards
+jupyter-nbextensions-configurator
+langid
+mpld3
+nbpresent
+seaborn
+vincent
+Whoosh

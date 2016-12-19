@@ -2,8 +2,8 @@
 (* ::Input:: *)
 fileName1=ToString[$CommandLine[[4]]];
 fileName2=ToString[$CommandLine[[5]]];
-imagename1=StringSplit[fileName1,'.'];
-imagename2=StringSplit[fileName2, '.'];
+imagename1=StringSplit[fileName1,'.'][[0]];
+imagename2=StringSplit[fileName2, '.'][[0]];
 Needs["GeneralUtilities`"]
 (* ::Input:: *)
 ({i1,i2}={Import[fileName1],Import[fileName2]};

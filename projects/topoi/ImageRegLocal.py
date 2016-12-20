@@ -14,8 +14,8 @@ def ImageRegistration(imagelist, reference):
         >>> 
         
     """
-      for x in range(0, len(imagelist)):
-            print('execute script: math -script run_registration.m '+reference[0]+' '+imagelist[x])
-            script = 'math -script run_registration.m  '+reference[0]+' '+imagelist[x]
-            p = sub.Popen(['ssh', 'mathematica@141.20.159.97',script],stdout=sub.PIPE,stderr=sub.PIPE) 
+    for x in range(0, len(imagelist)):
+        print('execute script: math -script run_registration.m '+reference[0]+' '+imagelist[x])
+        script = 'math -script run_registration.m  '+reference[0]+' '+imagelist[x]
+        p = sub.Popen(['ssh', 'mathematica@141.20.159.97',script],stdout=sub.PIPE,stderr=sub.PIPE) 
     return;
